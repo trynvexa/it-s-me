@@ -1,0 +1,1851 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>M. Zikri Al-Bukhori — Front-End Developer & UI Designer</title>
+
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="Portfolio M. Zikri Al-Bukhori, Front-End Developer & UI Designer dari Siantar, Indonesia. Pelajar SMK Swasta Mandiri yang fokus membangun website modern, responsif, dan interaktif."
+    />
+    <meta
+      name="keywords"
+      content="Zikri Al-Bukhori, front-end developer, UI designer, portfolio, SMK Mandiri, Siantar"
+    />
+    <meta name="author" content="M. Zikri Al-Bukhori" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://trynvexa.github.io/" />
+
+    <!-- Open Graph (preview saat dibagikan ke WhatsApp/Facebook/dll) -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="M. Zikri Al-Bukhori — Front-End Developer & UI Designer"
+    />
+    <meta
+      property="og:description"
+      content="Portfolio Front-End Developer & UI Designer dari Siantar, Indonesia. Lihat proyek, prestasi, dan galeri momen saya."
+    />
+    <meta property="og:image" content="img/zikri.jpg" />
+    <meta property="og:url" content="https://trynvexa.github.io/" />
+    <meta property="og:locale" content="id_ID" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="M. Zikri Al-Bukhori — Front-End Developer & UI Designer"
+    />
+    <meta
+      name="twitter:description"
+      content="Portfolio Front-End Developer & UI Designer dari Siantar, Indonesia."
+    />
+    <meta name="twitter:image" content="img/zikri.jpg" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="img/zikri.jpg" />
+    <link rel="apple-touch-icon" href="img/zikri.jpg" />
+    <meta name="theme-color" content="#6366f1" />
+
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ===== INTRO OVERLAY ===== -->
+    <div class="intro-overlay" id="introOverlay">
+      <canvas id="introCanvas"></canvas>
+      <div class="intro-inner">
+        <div class="intro-badge" id="introLine1">
+          <span class="intro-badge-dot"></span>
+          Portfolio
+        </div>
+        <div class="intro-name" id="introLine2">
+          M. Zikri<br /><span>Al-Bukhori</span>
+        </div>
+        <div class="intro-sub" id="introLine3">
+          Front-End Developer &nbsp;·&nbsp; UI Designer &nbsp;·&nbsp; Esports
+          Enthusiast
+        </div>
+        <div class="intro-bar" id="introBar">
+          <div class="intro-bar-fill" id="introBarFill"></div>
+        </div>
+        <div class="intro-progress-label" id="introLabel">Loading...</div>
+      </div>
+    </div>
+
+    <!-- ===== SCROLL PROGRESS BAR ===== -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#" translate="no">Zikri.</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto gap-1">
+            <li class="nav-item">
+              <a class="nav-link active" href="#home" translate="no">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about" translate="no">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#prestasi" translate="no">Prestasi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#gallery" translate="no">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact" translate="no">Contact</a>
+            </li>
+            <li class="nav-item lang-dropdown-wrap">
+              <button class="lang-btn" id="langBtn" translate="no">
+                <i class="bi bi-translate"></i>
+                <span id="langCurrent">Indonesia</span>
+                <i class="bi bi-chevron-down lang-chevron"></i>
+              </button>
+              <div class="lang-menu" id="langMenu" translate="no">
+                <button class="lang-option active" data-lang="id">
+                  🇮🇩 Indonesia
+                </button>
+                <button class="lang-option" data-lang="en">🇺🇸 Inggris</button>
+                <button class="lang-option" data-lang="ja">🇯🇵 Jepang</button>
+                <button class="lang-option" data-lang="ko">🇰🇷 Korea</button>
+                <button class="lang-option" data-lang="ar">🇸🇦 Arab</button>
+                <button class="lang-option" data-lang="zh-CN">🇨🇳 China</button>
+                <button class="lang-option" data-lang="fr">🇫🇷 Prancis</button>
+                <button class="lang-option" data-lang="de">🇩🇪 Jerman</button>
+                <button class="lang-option" data-lang="es">🇪🇸 Spanyol</button>
+                <button class="lang-option" data-lang="pt">🇧🇷 Portugis</button>
+                <button class="lang-option" data-lang="ru">🇷🇺 Rusia</button>
+                <button class="lang-option" data-lang="hi">🇮🇳 Hindi</button>
+                <button class="lang-option" data-lang="th">🇹🇭 Thailand</button>
+                <button class="lang-option" data-lang="vi">🇻🇳 Vietnam</button>
+                <button class="lang-option" data-lang="ms">🇲🇾 Melayu</button>
+                <button class="lang-option" data-lang="tr">🇹🇷 Turki</button>
+                <button class="lang-option" data-lang="it">🇮🇹 Italia</button>
+                <button class="lang-option" data-lang="nl">🇳🇱 Belanda</button>
+              </div>
+            </li>
+            <li class="nav-item">
+              <button
+                class="theme-toggle"
+                id="themeToggle"
+                type="button"
+                translate="no"
+                aria-label="Ganti tema gelap/terang"
+              >
+                <i class="bi bi-moon-stars-fill theme-icon-dark"></i>
+                <i class="bi bi-sun-fill theme-icon-light"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+      <canvas id="heroParticles"></canvas>
+      <div class="hero-glow-pulse"></div>
+      <div class="container">
+        <div data-aos="fade-up" data-aos-duration="700" class="profile-wrap">
+          <img src="img/zikri.jpg" alt="Foto Profil" class="profile-img" />
+          <div class="profile-ring"><div class="profile-dot"></div></div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
+          <div class="hero-eyebrow">
+            <i class="bi bi-geo-alt-fill"></i> Siantar, Indonesia
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
+          <h1>
+            M. Zikri<br /><span class="name-gradient">Al-Bukhori</span>
+            <small class="name-tag">SRG</small>
+          </h1>
+        </div>
+
+        <div
+          class="typing-row"
+          data-aos="fade-up"
+          data-aos-delay="300"
+          data-aos-duration="700"
+        >
+          <span class="typing-text" id="typingEl" translate="no"></span>
+          <span class="typing-cursor"></span>
+        </div>
+
+        <div
+          class="hero-stats"
+          data-aos="fade-up"
+          data-aos-delay="350"
+          data-aos-duration="700"
+        >
+          <div class="stat-item">
+            <span class="stat-num" data-count="17">0</span>
+            <span class="stat-label">Tahun</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" data-count="3" data-suffix="+">0</span>
+            <span class="stat-label">Proyek</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" data-count="1" data-suffix=" 🏆">0</span>
+            <span class="stat-label">Prestasi</span>
+          </div>
+        </div>
+
+        <div
+          class="hero-cta"
+          data-aos="fade-up"
+          data-aos-delay="400"
+          data-aos-duration="700"
+        >
+          <a href="#prestasi" class="btn-accent">
+            <i class="bi bi-trophy"></i> Lihat Prestasi
+          </a>
+          <a href="#contact" class="btn-outline-accent">
+            <i class="bi bi-send"></i> Hubungi Saya
+          </a>
+        </div>
+
+        <div
+          class="social-row"
+          data-aos="fade-up"
+          data-aos-delay="500"
+          data-aos-duration="700"
+        >
+          <a href="https://www.instagram.com/yo144484/" title="Instagram"
+            ><i class="bi bi-instagram"></i
+          ></a>
+          <a href="https://github.com/trynvexa" title="GitHub"
+            ><i class="bi bi-github"></i
+          ></a>
+          <a href="https://www.tiktok.com/@frince_nael7" title="TikTok"
+            ><i class="bi bi-tiktok"></i
+          ></a>
+          <a href="https://wa.me/6281367381826" target="_blank" title="WhatsApp"
+            ><i class="bi bi-whatsapp"></i
+          ></a>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-hint">
+        <span>Scroll</span>
+        <i class="bi bi-chevron-down"></i>
+      </a>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+      <div class="container" data-aos="fade-up" data-aos-duration="700">
+        <div class="text-center mb-5">
+          <span class="section-label">Tentang Saya</span>
+          <h2 class="section-heading">Who I Am</h2>
+          <div class="divider mx-auto"></div>
+        </div>
+
+        <div class="about-layout">
+          <!-- Kiri: teks -->
+          <div
+            class="about-content"
+            data-aos="fade-right"
+            data-aos-duration="700"
+          >
+            <p class="about-text" id="aboutText"></p>
+            <div class="about-skills">
+              <div class="tech-icon-wrap">
+                <div
+                  class="tech-icon"
+                  style="
+                    --icon-clr: #e34f26;
+                    --icon-bg: rgba(227, 79, 38, 0.08);
+                  "
+                >
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                    alt="HTML5"
+                  />
+                </div>
+                <span>HTML5</span>
+              </div>
+              <div class="tech-icon-wrap">
+                <div
+                  class="tech-icon"
+                  style="
+                    --icon-clr: #264de4;
+                    --icon-bg: rgba(38, 77, 228, 0.08);
+                  "
+                >
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                    alt="CSS3"
+                  />
+                </div>
+                <span>CSS3</span>
+              </div>
+              <div class="tech-icon-wrap">
+                <div
+                  class="tech-icon"
+                  style="
+                    --icon-clr: #f0db4f;
+                    --icon-bg: rgba(240, 219, 79, 0.12);
+                  "
+                >
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                    alt="JavaScript"
+                  />
+                </div>
+                <span>JavaScript</span>
+              </div>
+              <div class="tech-icon-wrap">
+                <div
+                  class="tech-icon"
+                  style="
+                    --icon-clr: #7952b3;
+                    --icon-bg: rgba(121, 82, 179, 0.08);
+                  "
+                >
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
+                    alt="Bootstrap"
+                  />
+                </div>
+                <span>Bootstrap</span>
+              </div>
+              <div class="tech-icon-wrap">
+                <div
+                  class="tech-icon"
+                  style="
+                    --icon-clr: #f24e1e;
+                    --icon-bg: rgba(242, 78, 30, 0.08);
+                  "
+                >
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+                    alt="Figma"
+                  />
+                </div>
+                <span>Figma</span>
+              </div>
+              <div class="tech-icon-wrap">
+                <div
+                  class="tech-icon"
+                  style="--icon-clr: #24292f; --icon-bg: rgba(36, 41, 47, 0.07)"
+                >
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                    alt="GitHub"
+                  />
+                </div>
+                <span>GitHub</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kanan: info cards -->
+          <div class="about-cards" data-aos="fade-left" data-aos-duration="700">
+            <div class="about-info-card">
+              <div class="about-info-icon">
+                <i class="bi bi-mortarboard-fill"></i>
+              </div>
+              <div>
+                <div class="about-info-label">Sekolah</div>
+                <div class="about-info-val">SMK Swasta Mandiri, Siantar</div>
+              </div>
+            </div>
+            <div class="about-info-card">
+              <div class="about-info-icon">
+                <i class="bi bi-geo-alt-fill"></i>
+              </div>
+              <div>
+                <div class="about-info-label">Lokasi</div>
+                <div class="about-info-val">Siantar, Sumatera Utara</div>
+              </div>
+            </div>
+            <div class="about-info-card">
+              <div class="about-info-icon">
+                <i class="bi bi-controller"></i>
+              </div>
+              <div>
+                <div class="about-info-label">Hobi</div>
+                <div class="about-info-val">Esports & Web Development</div>
+              </div>
+            </div>
+            <div class="about-info-card">
+              <div class="about-info-icon"><i class="bi bi-star-fill"></i></div>
+              <div>
+                <div class="about-info-label">Fokus</div>
+                <div class="about-info-val">Front-End & UI/UX Design</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRESTASI ===== -->
+    <section id="prestasi">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <span class="section-label">Pencapaian</span>
+          <h2 class="section-heading">Prestasi Saya</h2>
+          <div class="divider mx-auto"></div>
+          <p class="section-sub mt-3">
+            Perjalanan kompetitif yang membentuk karakter dan skill.
+          </p>
+        </div>
+
+        <div class="prestasi-grid">
+          <div
+            class="prestasi-card prestasi-card--featured"
+            data-aos="fade-up"
+            data-aos-delay="0"
+          >
+            <div class="prestasi-img-wrap">
+              <img
+                src="img/project/sertifikat1.jpg"
+                alt="Juara 1 MLBB"
+                class="prestasi-img"
+              />
+              <div class="prestasi-img-overlay"></div>
+              <div class="prestasi-rank">
+                <i class="bi bi-trophy-fill"></i> #1
+              </div>
+            </div>
+            <div class="prestasi-body">
+              <div class="prestasi-badge-wrap">
+                <span class="prestasi-chip prestasi-chip--gold"
+                  >🏆 Champion</span
+                >
+                <span class="prestasi-year">2024</span>
+              </div>
+              <h5 class="prestasi-title">Juara 1 MLBB</h5>
+              <p class="prestasi-text" id="cardText1"></p>
+              <div class="prestasi-tag">Anomali Store Season 1</div>
+            </div>
+          </div>
+
+          <div class="prestasi-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="prestasi-img-wrap">
+              <img
+                src="img/project/sertifikat2.jpg"
+                alt="Tournament Player"
+                class="prestasi-img"
+              />
+              <div class="prestasi-img-overlay"></div>
+            </div>
+            <div class="prestasi-body">
+              <div class="prestasi-badge-wrap">
+                <span class="prestasi-chip">🎮 Player</span>
+                <span class="prestasi-year">2024</span>
+              </div>
+              <h5 class="prestasi-title">Tournament Player</h5>
+              <p class="prestasi-text" id="cardText2"></p>
+              <div class="prestasi-tag">Competitive Player</div>
+            </div>
+          </div>
+
+          <div class="prestasi-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="prestasi-img-wrap">
+              <img
+                src="img/project/sertifikat3.jpg"
+                alt="Esports Experience"
+                class="prestasi-img"
+              />
+              <div class="prestasi-img-overlay"></div>
+            </div>
+            <div class="prestasi-body">
+              <div class="prestasi-badge-wrap">
+                <span class="prestasi-chip">🔥 Esports</span>
+                <span class="prestasi-year">2024</span>
+              </div>
+              <h5 class="prestasi-title">Esports Experience</h5>
+              <p class="prestasi-text" id="cardText3"></p>
+              <div class="prestasi-tag">MLBB Journey</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section id="gallery">
+      <div class="container" data-aos="fade-up" data-aos-duration="700">
+        <div class="text-center mb-5">
+          <span class="section-label">Momen</span>
+          <h2 class="section-heading">Gallery</h2>
+          <div class="divider mx-auto"></div>
+          <p class="section-sub mt-3">
+            Kumpulan momen berharga dalam perjalanan saya.
+          </p>
+        </div>
+
+        <!-- Counter & Nav Header -->
+        <div class="gallery-header">
+          <span class="gallery-counter"
+            ><span id="galleryCurrentNum">1</span> /
+            <span id="galleryTotalNum">6</span></span
+          >
+          <div class="gallery-nav-group">
+            <button
+              class="carousel-nav"
+              id="carouselPrev"
+              type="button"
+              aria-label="Foto sebelumnya"
+            >
+              <i class="bi bi-chevron-left"></i>
+            </button>
+            <button
+              class="carousel-nav"
+              id="carouselNext"
+              type="button"
+              aria-label="Foto berikutnya"
+            >
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="gallery-carousel" id="galleryCarousel">
+          <div class="carousel-viewport">
+            <div class="carousel-track" id="carouselTrack">
+              <div class="carousel-slide" data-index="0">
+                <img
+                  src="img/Gallery/thumbnail/1.jpg"
+                  class="gallery-img"
+                  alt="Momen 1"
+                  loading="lazy"
+                />
+                <div class="gallery-overlay">
+                  <span class="gallery-caption">Momen 1</span>
+                  <button class="gallery-zoom-btn" aria-label="Lihat penuh">
+                    <i class="bi bi-arrows-fullscreen"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="carousel-slide" data-index="1">
+                <img
+                  src="img/Gallery/thumbnail/2.jpg"
+                  class="gallery-img"
+                  alt="Momen 2"
+                  loading="lazy"
+                />
+                <div class="gallery-overlay">
+                  <span class="gallery-caption">Momen 2</span>
+                  <button class="gallery-zoom-btn" aria-label="Lihat penuh">
+                    <i class="bi bi-arrows-fullscreen"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="carousel-slide" data-index="2">
+                <img
+                  src="img/Gallery/thumbnail/3.jpg"
+                  class="gallery-img"
+                  alt="Momen 3"
+                  loading="lazy"
+                />
+                <div class="gallery-overlay">
+                  <span class="gallery-caption">Momen 3</span>
+                  <button class="gallery-zoom-btn" aria-label="Lihat penuh">
+                    <i class="bi bi-arrows-fullscreen"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="carousel-slide" data-index="3">
+                <img
+                  src="img/Gallery/thumbnail/4.jpg"
+                  class="gallery-img"
+                  alt="Momen 4"
+                  loading="lazy"
+                />
+                <div class="gallery-overlay">
+                  <span class="gallery-caption">Momen 4</span>
+                  <button class="gallery-zoom-btn" aria-label="Lihat penuh">
+                    <i class="bi bi-arrows-fullscreen"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="carousel-slide" data-index="4">
+                <img
+                  src="img/Gallery/thumbnail/5.jpg"
+                  class="gallery-img"
+                  alt="Momen 5"
+                  loading="lazy"
+                />
+                <div class="gallery-overlay">
+                  <span class="gallery-caption">Momen 5</span>
+                  <button class="gallery-zoom-btn" aria-label="Lihat penuh">
+                    <i class="bi bi-arrows-fullscreen"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="carousel-slide" data-index="5">
+                <img
+                  src="img/Gallery/thumbnail/6.jpg"
+                  class="gallery-img"
+                  alt="Momen 6"
+                  loading="lazy"
+                />
+                <div class="gallery-overlay">
+                  <span class="gallery-caption">Momen 6</span>
+                  <button class="gallery-zoom-btn" aria-label="Lihat penuh">
+                    <i class="bi bi-arrows-fullscreen"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dot strip -->
+        <div class="carousel-dots" id="carouselDots"></div>
+
+        <!-- Thumbnail strip -->
+        <div class="gallery-thumbs" id="galleryThumbs">
+          <div class="thumb-item active" data-index="0">
+            <img src="img/Gallery/thumbnail/1.jpg" alt="Thumb 1" />
+          </div>
+          <div class="thumb-item" data-index="1">
+            <img src="img/Gallery/thumbnail/2.jpg" alt="Thumb 2" />
+          </div>
+          <div class="thumb-item" data-index="2">
+            <img src="img/Gallery/thumbnail/3.jpg" alt="Thumb 3" />
+          </div>
+          <div class="thumb-item" data-index="3">
+            <img src="img/Gallery/thumbnail/4.jpg" alt="Thumb 4" />
+          </div>
+          <div class="thumb-item" data-index="4">
+            <img src="img/Gallery/thumbnail/5.jpg" alt="Thumb 5" />
+          </div>
+          <div class="thumb-item" data-index="5">
+            <img src="img/Gallery/thumbnail/6.jpg" alt="Thumb 6" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fullscreen Viewer -->
+    <div class="image-viewer" id="imageViewer">
+      <span class="close-btn">&times;</span>
+      <button
+        class="viewer-nav viewer-nav-prev"
+        id="viewerPrev"
+        type="button"
+        aria-label="Foto sebelumnya"
+      >
+        <i class="bi bi-chevron-left"></i>
+      </button>
+      <img id="fullscreenImage" alt="Fullscreen" />
+      <button
+        class="viewer-nav viewer-nav-next"
+        id="viewerNext"
+        type="button"
+        aria-label="Foto berikutnya"
+      >
+        <i class="bi bi-chevron-right"></i>
+      </button>
+      <div class="viewer-caption" id="viewerCaption"></div>
+    </div>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact">
+      <div class="container" data-aos="fade-up" data-aos-duration="700">
+        <div class="text-center mb-5">
+          <span class="section-label">Reach Out</span>
+          <h2 class="section-heading">Hubungi Saya</h2>
+          <div class="divider mx-auto"></div>
+          <p class="section-sub mt-3">
+            Ada pertanyaan atau mau kolaborasi? Langsung kirim pesan!
+          </p>
+        </div>
+
+        <div class="contact-wrapper">
+          <!-- Kiri: info + sosial -->
+          <div
+            class="contact-left"
+            data-aos="fade-right"
+            data-aos-duration="700"
+          >
+            <!-- Status badge -->
+            <div class="contact-status">
+              <span class="contact-status-dot"></span>
+              Tersedia untuk proyek baru
+            </div>
+
+            <h3 class="contact-heading">
+              Mari kita buat sesuatu yang keren bersama 🚀
+            </h3>
+            <p class="contact-desc">
+              Terbuka untuk proyek freelance, kolaborasi, atau sekadar ngobrol
+              soal teknologi & desain.
+            </p>
+
+            <!-- Contact items -->
+            <div class="contact-items">
+              <a
+                href="https://wa.me/6281367381826"
+                target="_blank"
+                class="contact-card"
+              >
+                <div
+                  class="contact-card-icon"
+                  style="background: #dcfce7; color: #16a34a"
+                >
+                  <i class="bi bi-whatsapp"></i>
+                </div>
+                <div class="contact-card-info">
+                  <span class="contact-card-label">WhatsApp</span>
+                  <span class="contact-card-val">+62 813-6738-1826</span>
+                </div>
+                <i class="bi bi-arrow-up-right contact-card-arrow"></i>
+              </a>
+
+              <a
+                href="https://www.instagram.com/yo144484/"
+                target="_blank"
+                class="contact-card"
+              >
+                <div
+                  class="contact-card-icon"
+                  style="background: #fce7f3; color: #db2777"
+                >
+                  <i class="bi bi-instagram"></i>
+                </div>
+                <div class="contact-card-info">
+                  <span class="contact-card-label">Instagram</span>
+                  <span class="contact-card-val">@yo144484</span>
+                </div>
+                <i class="bi bi-arrow-up-right contact-card-arrow"></i>
+              </a>
+
+              <a
+                href="https://github.com/trynvexa"
+                target="_blank"
+                class="contact-card"
+              >
+                <div
+                  class="contact-card-icon"
+                  style="background: #f1f5f9; color: #0f172a"
+                >
+                  <i class="bi bi-github"></i>
+                </div>
+                <div class="contact-card-info">
+                  <span class="contact-card-label">GitHub</span>
+                  <span class="contact-card-val">trynvexa</span>
+                </div>
+                <i class="bi bi-arrow-up-right contact-card-arrow"></i>
+              </a>
+
+              <a
+                href="https://www.tiktok.com/@frince_nael7"
+                target="_blank"
+                class="contact-card"
+              >
+                <div
+                  class="contact-card-icon"
+                  style="background: #f0f0f0; color: #000000"
+                >
+                  <i class="bi bi-tiktok"></i>
+                </div>
+                <div class="contact-card-info">
+                  <span class="contact-card-label">TikTok</span>
+                  <span class="contact-card-val">@frince_nael7</span>
+                </div>
+                <i class="bi bi-arrow-up-right contact-card-arrow"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Kanan: form -->
+          <div
+            class="contact-right"
+            data-aos="fade-left"
+            data-aos-duration="700"
+          >
+            <div class="contact-form-box">
+              <div class="contact-form-header">
+                <h4 class="contact-form-title">Kirim Pesan</h4>
+                <p class="contact-form-sub">Biasanya balas dalam 1×24 jam</p>
+              </div>
+
+              <div
+                class="alert alert-success alert-dismissible fade show d-none my-alert"
+                role="alert"
+              >
+                <i class="bi bi-check-circle-fill me-2"></i
+                ><strong>Terima kasih!</strong> Pesan kamu berhasil dikirim.
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="alert"
+                ></button>
+              </div>
+
+              <form name="zikri-contact-form">
+                <div class="contact-form-group">
+                  <label class="contact-form-label">Nama Lengkap</label>
+                  <div class="contact-input-wrap">
+                    <i class="bi bi-person contact-input-icon"></i>
+                    <input
+                      type="text"
+                      class="contact-input"
+                      name="nama"
+                      required
+                      placeholder="Nama kamu"
+                    />
+                  </div>
+                </div>
+
+                <div class="contact-form-group">
+                  <label class="contact-form-label">Pesan</label>
+                  <div class="contact-input-wrap textarea-wrap">
+                    <i class="bi bi-chat-left-text contact-input-icon"></i>
+                    <textarea
+                      class="contact-input"
+                      rows="5"
+                      name="pendapat anda"
+                      required
+                      placeholder="Tulis pesanmu di sini..."
+                    ></textarea>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn-kirim-new">
+                  <i class="bi bi-send-fill"></i>
+                  Kirim Pesan
+                </button>
+                <button class="btn-loading-new d-none" type="button" disabled>
+                  <span class="spinner-border spinner-border-sm"></span>
+                  Mengirim...
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      <div class="footer-glow"></div>
+      <div class="container">
+        <div class="footer-inner">
+          <!-- Kiri: brand -->
+          <div class="footer-brand">
+            <span class="footer-logo">Zikri.</span>
+            <p class="footer-tagline">
+              Front-End Developer & UI Designer<br />SMK Swasta Mandiri,
+              Siantar.
+            </p>
+            <div class="footer-social">
+              <a href="https://www.instagram.com/yo144484/" title="Instagram"
+                ><i class="bi bi-instagram"></i
+              ></a>
+              <a href="https://github.com/trynvexa" title="GitHub"
+                ><i class="bi bi-github"></i
+              ></a>
+              <a href="https://www.tiktok.com/@frince_nael7" title="TikTok"
+                ><i class="bi bi-tiktok"></i
+              ></a>
+              <a
+                href="https://wa.me/6281367381826"
+                target="_blank"
+                title="WhatsApp"
+                ><i class="bi bi-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Tengah: nav links -->
+          <div class="footer-nav-block">
+            <div class="footer-nav-title">Navigasi</div>
+            <div class="footer-links">
+              <a href="#home"><i class="bi bi-house"></i> Home</a>
+              <a href="#about"><i class="bi bi-person"></i> About</a>
+              <a href="#prestasi"><i class="bi bi-trophy"></i> Prestasi</a>
+              <a href="#gallery"><i class="bi bi-images"></i> Gallery</a>
+              <a href="#contact"><i class="bi bi-chat"></i> Contact</a>
+            </div>
+          </div>
+
+          <!-- Kanan: status -->
+          <div class="footer-status-block">
+            <div class="footer-nav-title">Status</div>
+            <div class="footer-status-badge">
+              <span class="footer-status-dot"></span>
+              Tersedia untuk proyek baru
+            </div>
+            <p class="footer-status-desc">
+              Terbuka untuk kolaborasi, freelance, atau sekadar ngobrol soal
+              teknologi.
+            </p>
+            <a href="#contact" class="footer-cta">
+              <i class="bi bi-send-fill"></i> Hubungi Saya
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>© 2026 M. Zikri Al-Bukhori SRG. All rights reserved.</span>
+          <span
+            >Made with
+            <i class="bi bi-heart-fill" style="color: #f43f5e"></i> by
+            <a href="https://www.tiktok.com/@frince_nael7" target="_blank"
+              >Frince Nael</a
+            ></span
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/TextPlugin.min.js"></script>
+
+    <script>
+      AOS.init({ once: true, offset: 60 });
+
+      // ===== INTRO OVERLAY =====
+      (function () {
+        const overlay = document.getElementById("introOverlay");
+        const canvas = document.getElementById("introCanvas");
+        const ctx = canvas.getContext("2d");
+        const line1 = document.getElementById("introLine1");
+        const line2 = document.getElementById("introLine2");
+        const line3 = document.getElementById("introLine3");
+        const divider = document.getElementById("introDivider");
+        const bar = document.getElementById("introBar");
+        const label = document.getElementById("introLabel");
+
+        document.body.style.overflow = "hidden";
+
+        // --- Canvas resize ---
+        function resize() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener("resize", resize);
+
+        // --- Floating orbs (light theme) ---
+        const ORBS = 18;
+        const orbs = Array.from({ length: ORBS }, () => ({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          r: Math.random() * 60 + 20,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          alpha: Math.random() * 0.04 + 0.02,
+          hue: Math.random() > 0.5 ? "99,102,241" : "165,180,252",
+        }));
+
+        // --- Dots ---
+        const NUM = 55;
+        const pts = Array.from({ length: NUM }, () => ({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          vx: (Math.random() - 0.5) * 0.35,
+          vy: (Math.random() - 0.5) * 0.35,
+          r: Math.random() * 1.8 + 0.5,
+          alpha: Math.random() * 0.18 + 0.05,
+          pulse: Math.random() * Math.PI * 2,
+        }));
+
+        let frame = 0;
+        let introRafId = null;
+
+        function draw() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          frame++;
+
+          // Orbs
+          orbs.forEach((o) => {
+            o.x += o.vx;
+            o.y += o.vy;
+            if (o.x < -o.r) o.x = canvas.width + o.r;
+            if (o.x > canvas.width + o.r) o.x = -o.r;
+            if (o.y < -o.r) o.y = canvas.height + o.r;
+            if (o.y > canvas.height + o.r) o.y = -o.r;
+            const g = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, o.r);
+            g.addColorStop(0, `rgba(${o.hue},${o.alpha})`);
+            g.addColorStop(1, `rgba(${o.hue},0)`);
+            ctx.beginPath();
+            ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2);
+            ctx.fillStyle = g;
+            ctx.fill();
+          });
+
+          // Dots
+          pts.forEach((p) => {
+            p.x += p.vx;
+            p.y += p.vy;
+            p.pulse += 0.02;
+            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+            const a = p.alpha * (0.6 + 0.4 * Math.sin(p.pulse));
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(99,102,241,${a})`;
+            ctx.fill();
+          });
+
+          // Connection lines
+          for (let i = 0; i < pts.length; i++) {
+            for (let j = i + 1; j < pts.length; j++) {
+              const dx = pts[i].x - pts[j].x;
+              const dy = pts[i].y - pts[j].y;
+              const d = Math.sqrt(dx * dx + dy * dy);
+              if (d < 120) {
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(99,102,241,${0.08 * (1 - d / 120)})`;
+                ctx.lineWidth = 0.6;
+                ctx.moveTo(pts[i].x, pts[i].y);
+                ctx.lineTo(pts[j].x, pts[j].y);
+                ctx.stroke();
+              }
+            }
+          }
+
+          introRafId = requestAnimationFrame(draw);
+        }
+        draw();
+
+        // --- Text reveal ---
+        const show = (el, delay) =>
+          setTimeout(() => el.classList.add("visible"), delay);
+        const hide = (el, delay) =>
+          setTimeout(() => el.classList.remove("visible"), delay);
+
+        show(line1, 200);
+        show(line2, 700);
+        show(line3, 1400);
+        setTimeout(() => {
+          bar.classList.add("visible");
+          label.classList.add("visible");
+        }, 1700);
+
+        hide(label, 3000);
+        hide(line3, 3100);
+        hide(line2, 3350);
+        hide(line1, 3500);
+
+        setTimeout(() => {
+          overlay.classList.add("outro");
+          setTimeout(() => {
+            overlay.style.display = "none";
+            document.body.style.overflow = "";
+            if (introRafId !== null) {
+              cancelAnimationFrame(introRafId);
+              introRafId = null;
+            }
+          }, 1000);
+        }, 3800);
+      })();
+
+      // ===== PARTICLE CANVAS =====
+      (function () {
+        const canvas = document.getElementById("heroParticles");
+        const ctx = canvas.getContext("2d");
+        let particles = [];
+        let rafId = null;
+        let isVisible = true;
+
+        function resize() {
+          canvas.width = canvas.offsetWidth;
+          canvas.height = canvas.offsetHeight;
+        }
+
+        class Particle {
+          constructor() {
+            this.reset();
+          }
+          reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.r = Math.random() * 2 + 1;
+            this.vx = (Math.random() - 0.5) * 0.4;
+            this.vy = (Math.random() - 0.5) * 0.4;
+            this.alpha = Math.random() * 0.35 + 0.08;
+          }
+          update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+          }
+          draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(99,102,241,${this.alpha})`;
+            ctx.fill();
+          }
+        }
+
+        function init() {
+          resize();
+          particles = Array.from({ length: 45 }, () => new Particle());
+          animate();
+        }
+
+        function animate() {
+          if (!isVisible) {
+            rafId = null;
+            return;
+          }
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          particles.forEach((p) => {
+            p.update();
+            p.draw();
+          });
+          for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+              const dx = particles[i].x - particles[j].x;
+              const dy = particles[i].y - particles[j].y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < 110) {
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(99,102,241,${0.07 * (1 - dist / 110)})`;
+                ctx.lineWidth = 0.8;
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.stroke();
+              }
+            }
+          }
+          rafId = requestAnimationFrame(animate);
+        }
+
+        // Hentikan animasi saat hero tidak terlihat (mis. sudah scroll
+        // jauh ke section lain), supaya tidak ikut membebani CPU/scroll
+        const heroSection = document.getElementById("home");
+        if (heroSection && "IntersectionObserver" in window) {
+          const visObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                isVisible = entry.isIntersecting;
+                if (isVisible && rafId === null) {
+                  rafId = requestAnimationFrame(animate);
+                }
+              });
+            },
+            { threshold: 0 },
+          );
+          visObserver.observe(heroSection);
+        }
+
+        window.addEventListener("resize", resize);
+        init();
+      })();
+
+      // ===== TYPING EFFECT (multi-bahasa) =====
+      const phrasesByLang = {
+        id: [
+          "Front-End Developer",
+          "UI Designer",
+          "Pelajar SMK Mandiri",
+          "Esports Enthusiast",
+        ],
+        en: [
+          "Front-End Developer",
+          "UI Designer",
+          "Student at SMK Mandiri",
+          "Esports Enthusiast",
+        ],
+        ja: [
+          "フロントエンド開発者",
+          "UIデザイナー",
+          "SMKマンディリの学生",
+          "eスポーツ愛好家",
+        ],
+        ko: [
+          "프론트엔드 개발자",
+          "UI 디자이너",
+          "SMK 만디리 학생",
+          "이스포츠 애호가",
+        ],
+        ar: [
+          "مطور واجهات أمامية",
+          "مصمم واجهة مستخدم",
+          "طالب في SMK Mandiri",
+          "عاشق الرياضات الإلكترونية",
+        ],
+        "zh-CN": [
+          "前端开发者",
+          "UI设计师",
+          "SMK Mandiri 学生",
+          "电子竞技爱好者",
+        ],
+        fr: [
+          "Développeur Front-End",
+          "Designer UI",
+          "Étudiant à SMK Mandiri",
+          "Passionné d'Esports",
+        ],
+        de: [
+          "Front-End-Entwickler",
+          "UI-Designer",
+          "Schüler an der SMK Mandiri",
+          "Esports-Enthusiast",
+        ],
+        es: [
+          "Desarrollador Front-End",
+          "Diseñador UI",
+          "Estudiante de SMK Mandiri",
+          "Entusiasta de Esports",
+        ],
+        pt: [
+          "Desenvolvedor Front-End",
+          "Designer de UI",
+          "Estudante na SMK Mandiri",
+          "Entusiasta de Esports",
+        ],
+        ru: [
+          "Фронтенд-разработчик",
+          "UI-дизайнер",
+          "Учащийся SMK Mandiri",
+          "Любитель эспортс",
+        ],
+        hi: [
+          "फ्रंट-एंड डेवलपर",
+          "यूआई डिज़ाइनर",
+          "SMK Mandiri का छात्र",
+          "ईस्पोर्ट्स प्रेमी",
+        ],
+        th: [
+          "นักพัฒนาฟรอนต์เอนด์",
+          "นักออกแบบ UI",
+          "นักเรียน SMK Mandiri",
+          "ผู้ชื่นชอบอีสปอร์ต",
+        ],
+        vi: [
+          "Lập trình viên Front-End",
+          "Nhà thiết kế UI",
+          "Học sinh SMK Mandiri",
+          "Người đam mê Esports",
+        ],
+        ms: [
+          "Pembangun Front-End",
+          "Pereka UI",
+          "Pelajar SMK Mandiri",
+          "Peminat Esports",
+        ],
+        tr: [
+          "Front-End Geliştirici",
+          "UI Tasarımcısı",
+          "SMK Mandiri Öğrencisi",
+          "Esports Meraklısı",
+        ],
+        it: [
+          "Sviluppatore Front-End",
+          "Designer UI",
+          "Studente alla SMK Mandiri",
+          "Appassionato di Esports",
+        ],
+        nl: [
+          "Front-End Developer",
+          "UI Designer",
+          "Student aan SMK Mandiri",
+          "Esports-enthousiast",
+        ],
+      };
+
+      let currentLangCode = "id";
+      let phrases = phrasesByLang[currentLangCode];
+      let pi = 0,
+        ci = 0,
+        del = false;
+      const tel = document.getElementById("typingEl");
+      function type() {
+        const cur = phrases[pi];
+        if (!del) {
+          tel.textContent = cur.slice(0, ++ci);
+          if (ci === cur.length) {
+            del = true;
+            setTimeout(type, 2000);
+            return;
+          }
+        } else {
+          tel.textContent = cur.slice(0, --ci);
+          if (ci === 0) {
+            del = false;
+            pi = (pi + 1) % phrases.length;
+          }
+        }
+        setTimeout(type, del ? 45 : 75);
+      }
+      setTimeout(type, 600);
+
+      // Dipanggil saat bahasa diganti dari dropdown, agar typing effect
+      // ikut beralih ke frasa versi bahasa yang dipilih (bukan dibiarkan
+      // ditimpa lagi oleh Google Translate yang bisa bikin teks "bug")
+      function setTypingLanguage(langCode) {
+        currentLangCode = langCode;
+        phrases = phrasesByLang[langCode] || phrasesByLang.en;
+        pi = 0;
+        ci = 0;
+        del = false;
+        tel.textContent = "";
+      }
+
+      // ===== GSAP TEXT =====
+      gsap.registerPlugin(TextPlugin);
+
+      gsap.to("#aboutText", {
+        duration: 4,
+        delay: 0.5,
+        text: "Saya adalah pelajar dari SMK Swasta Mandiri dan seorang Web Developer yang fokus pada pengembangan Front-End. Saya terus mengembangkan kemampuan dalam membuat website modern, responsif, dan interaktif dengan desain yang menarik dan pengalaman pengguna yang nyaman.",
+      });
+
+      [
+        {
+          id: "#cardText1",
+          text: "Berhasil meraih Juara 1 pada turnamen MLBB Anomali Store Season 1.",
+        },
+        {
+          id: "#cardText2",
+          text: "Aktif mengikuti turnamen MLBB untuk meningkatkan skill bermain.",
+        },
+        {
+          id: "#cardText3",
+          text: "Mengembangkan teamwork dan strategi dalam dunia kompetitif MLBB.",
+        },
+      ].forEach((c, i) =>
+        gsap.to(c.id, { duration: 3, delay: 1 + i * 0.4, text: c.text }),
+      );
+
+      // ===== GALLERY CAROUSEL (upgraded: 3 visible + thumbnails) =====
+      (() => {
+        const track = document.getElementById("carouselTrack");
+        const slides = Array.from(document.querySelectorAll(".carousel-slide"));
+        const dotsWrap = document.getElementById("carouselDots");
+        const prevBtn = document.getElementById("carouselPrev");
+        const nextBtn = document.getElementById("carouselNext");
+        const thumbItems = Array.from(document.querySelectorAll(".thumb-item"));
+        const currentNum = document.getElementById("galleryCurrentNum");
+        const totalNum = document.getElementById("galleryTotalNum");
+        const total = slides.length;
+        totalNum.textContent = total;
+        let idx = 0;
+
+        // skeleton loading
+        document.querySelectorAll(".gallery-img").forEach((img) => {
+          const slide = img.closest(".carousel-slide");
+          const done = () => {
+            img.classList.add("is-loaded");
+            slide?.classList.add("img-loaded");
+          };
+          if (img.complete && img.naturalWidth > 0) done();
+          else {
+            img.addEventListener("load", done);
+            img.addEventListener("error", done);
+          }
+        });
+
+        // visible count based on viewport
+        function visibleCount() {
+          return window.innerWidth >= 768 ? 3 : 1;
+        }
+
+        // build dots
+        slides.forEach((_, i) => {
+          const d = document.createElement("button");
+          d.className = "carousel-dot";
+          d.type = "button";
+          d.setAttribute("aria-label", "Ke foto " + (i + 1));
+          d.addEventListener("click", () => goTo(i));
+          dotsWrap.appendChild(d);
+        });
+        const dots = Array.from(dotsWrap.querySelectorAll(".carousel-dot"));
+
+        function update() {
+          const vc = visibleCount();
+          const pct = 100 / vc;
+          const maxIdx = Math.max(0, total - vc);
+          idx = Math.min(idx, maxIdx);
+
+          // slide width
+          slides.forEach((s) => {
+            s.style.flex = `0 0 ${pct}%`;
+            s.style.maxWidth = `${pct}%`;
+          });
+          track.style.transform = `translateX(-${idx * pct}%)`;
+
+          // dots — highlight all visible
+          dots.forEach((d, i) =>
+            d.classList.toggle("active", i >= idx && i < idx + vc),
+          );
+
+          // thumbs
+          thumbItems.forEach((t, i) =>
+            t.classList.toggle("active", i >= idx && i < idx + vc),
+          );
+
+          // counter
+          currentNum.textContent = idx + 1;
+
+          // nav disable
+          prevBtn.disabled = idx === 0;
+          nextBtn.disabled = idx >= maxIdx;
+
+          // active slide highlight
+          slides.forEach((s, i) =>
+            s.classList.toggle("is-active", i >= idx && i < idx + vc),
+          );
+        }
+
+        function goTo(i) {
+          idx = i;
+          update();
+        }
+
+        prevBtn.addEventListener("click", () => {
+          if (idx > 0) {
+            idx--;
+            update();
+          }
+        });
+        nextBtn.addEventListener("click", () => {
+          const maxIdx = Math.max(0, total - visibleCount());
+          if (idx < maxIdx) {
+            idx++;
+            update();
+          }
+        });
+
+        // thumbnails click
+        thumbItems.forEach((t) => {
+          t.addEventListener("click", () => goTo(parseInt(t.dataset.index)));
+        });
+
+        // swipe
+        let tx = 0;
+        track.addEventListener(
+          "touchstart",
+          (e) => {
+            tx = e.changedTouches[0].screenX;
+          },
+          { passive: true },
+        );
+        track.addEventListener(
+          "touchend",
+          (e) => {
+            const dx = e.changedTouches[0].screenX - tx;
+            if (Math.abs(dx) > 40) dx > 0 ? prevBtn.click() : nextBtn.click();
+          },
+          { passive: true },
+        );
+
+        // keyboard
+        document.addEventListener("keydown", (e) => {
+          if (
+            document.getElementById("imageViewer")?.classList.contains("show")
+          )
+            return;
+          if (e.key === "ArrowLeft") prevBtn.click();
+          if (e.key === "ArrowRight") nextBtn.click();
+        });
+
+        window.addEventListener("resize", update);
+        update();
+
+        // zoom btn → open lightbox
+        document.querySelectorAll(".gallery-zoom-btn").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const slide = btn.closest(".carousel-slide");
+            openViewerAt(parseInt(slide.dataset.index));
+          });
+        });
+        // click on slide (not btn) → lightbox too
+        slides.forEach((slide) => {
+          slide.addEventListener("click", (e) => {
+            if (e.target.closest(".gallery-zoom-btn")) return;
+            openViewerAt(parseInt(slide.dataset.index));
+          });
+        });
+      })();
+
+      // ===== GALLERY LIGHTBOX =====
+      const viewer = document.getElementById("imageViewer");
+      const fullImg = document.getElementById("fullscreenImage");
+      const viewerCaption = document.getElementById("viewerCaption");
+      const galleryImgs = Array.from(document.querySelectorAll(".gallery-img"));
+      let currentGalleryIndex = 0;
+
+      function openViewerAt(index) {
+        if (!galleryImgs.length) return;
+        currentGalleryIndex = (index + galleryImgs.length) % galleryImgs.length;
+        const img = galleryImgs[currentGalleryIndex];
+        fullImg.src = img.src
+          .replace("thumbnail/", "")
+          .replace("thumbnail\\", "");
+        viewerCaption.textContent = img.alt || "";
+        viewer.classList.add("show");
+      }
+
+      document
+        .querySelector(".close-btn")
+        .addEventListener("click", () => viewer.classList.remove("show"));
+
+      document.getElementById("viewerPrev").addEventListener("click", (e) => {
+        e.stopPropagation();
+        openViewerAt(currentGalleryIndex - 1);
+      });
+
+      document.getElementById("viewerNext").addEventListener("click", (e) => {
+        e.stopPropagation();
+        openViewerAt(currentGalleryIndex + 1);
+      });
+
+      viewer.addEventListener("click", (e) => {
+        if (e.target === fullImg || e.target.closest(".viewer-nav")) return;
+        viewer.classList.remove("show");
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (!viewer.classList.contains("show")) return;
+        if (e.key === "Escape") viewer.classList.remove("show");
+        if (e.key === "ArrowLeft") openViewerAt(currentGalleryIndex - 1);
+        if (e.key === "ArrowRight") openViewerAt(currentGalleryIndex + 1);
+      });
+
+      // Swipe kiri/kanan di lightbox (mobile)
+      let viewerTouchStartX = 0;
+      viewer.addEventListener(
+        "touchstart",
+        (e) => {
+          viewerTouchStartX = e.changedTouches[0].screenX;
+        },
+        { passive: true },
+      );
+      viewer.addEventListener(
+        "touchend",
+        (e) => {
+          const dx = e.changedTouches[0].screenX - viewerTouchStartX;
+          if (Math.abs(dx) > 50) {
+            if (dx > 0) openViewerAt(currentGalleryIndex - 1);
+            else openViewerAt(currentGalleryIndex + 1);
+          }
+        },
+        { passive: true },
+      );
+
+      // ===== CONTACT FORM =====
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbxWeKaXJw0mxqymtcuqGGkLF5ONhfzFhcqnvYVcm4qzOsyw1eGGE6zdlusFevIkzDCd/exec";
+      const form = document.forms["zikri-contact-form"];
+      const btnKirim = document.querySelector(".btn-kirim-new");
+      const btnLoad = document.querySelector(".btn-loading-new");
+      const myAlert = document.querySelector(".my-alert");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        btnLoad.classList.remove("d-none");
+        btnKirim.classList.add("d-none");
+        fetch(scriptURL, {
+          method: "POST",
+          mode: "no-cors",
+          body: new FormData(form),
+        })
+          .then(() => {
+            btnLoad.classList.add("d-none");
+            btnKirim.classList.remove("d-none");
+            myAlert.classList.remove("d-none");
+            form.reset();
+          })
+          .catch(() => {
+            btnLoad.classList.add("d-none");
+            btnKirim.classList.remove("d-none");
+          });
+      });
+    </script>
+
+    <!-- Google Translate -->
+    <div id="google_translate_element" style="display: none"></div>
+    <script>
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "id",
+            autoDisplay: false,
+          },
+          "google_translate_element",
+        );
+      }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+      // ===== LANGUAGE DROPDOWN =====
+      const langBtn = document.getElementById("langBtn");
+      const langMenu = document.getElementById("langMenu");
+      const langCurrent = document.getElementById("langCurrent");
+      const langLabels = {
+        id: "Indonesia",
+        en: "Inggris",
+        ja: "Jepang",
+        ko: "Korea",
+        ar: "Arab",
+        "zh-CN": "China",
+        fr: "Prancis",
+        de: "Jerman",
+        es: "Spanyol",
+        pt: "Portugis",
+        ru: "Rusia",
+        hi: "Hindi",
+        th: "Thailand",
+        vi: "Vietnam",
+        ms: "Melayu",
+        tr: "Turki",
+        it: "Italia",
+        nl: "Belanda",
+      };
+
+      function toggleLangMenu(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        langMenu.classList.toggle("show");
+        langBtn.classList.toggle("open");
+      }
+
+      // click untuk desktop, touchend untuk mobile (lebih responsif
+      // daripada click di banyak browser mobile, terutama saat tombol
+      // berada di dalam container yang bisa di-scroll)
+      langBtn.addEventListener("click", toggleLangMenu);
+      langBtn.addEventListener(
+        "touchend",
+        (e) => {
+          toggleLangMenu(e);
+        },
+        { passive: false },
+      );
+
+      function closeLangMenu() {
+        langMenu.classList.remove("show");
+        langBtn.classList.remove("open");
+      }
+
+      document.addEventListener("click", closeLangMenu);
+      document.addEventListener("touchend", (e) => {
+        if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
+          closeLangMenu();
+        }
+      });
+
+      function selectLang(btn) {
+        const lang = btn.dataset.lang;
+
+        // Update active state
+        document
+          .querySelectorAll(".lang-option")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        langCurrent.textContent = langLabels[lang];
+        closeLangMenu();
+
+        // Ganti frasa typing effect ke bahasa yang dipilih
+        setTypingLanguage(lang);
+
+        // Trigger Google Translate
+        const select = document.querySelector(".goog-te-combo");
+        if (select) {
+          select.value = lang === "id" ? "" : lang;
+          select.dispatchEvent(new Event("change"));
+        }
+      }
+
+      document.querySelectorAll(".lang-option").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          selectLang(btn);
+        });
+        btn.addEventListener(
+          "touchend",
+          (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            selectLang(btn);
+          },
+          { passive: false },
+        );
+      });
+    </script>
+    <!-- ===== BACK TO TOP ===== -->
+    <button
+      class="back-to-top"
+      id="backToTop"
+      type="button"
+      aria-label="Kembali ke atas"
+      translate="no"
+    >
+      <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <script>
+      // ===== DARK MODE TOGGLE =====
+      (() => {
+        const root = document.documentElement;
+        const toggleBtn = document.getElementById("themeToggle");
+        const stored = localStorage.getItem("theme");
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const initial = stored || (prefersDark ? "dark" : "light");
+
+        if (initial === "dark") {
+          root.setAttribute("data-theme", "dark");
+        }
+
+        toggleBtn.addEventListener("click", () => {
+          const isDark = root.getAttribute("data-theme") === "dark";
+          if (isDark) {
+            root.removeAttribute("data-theme");
+            localStorage.setItem("theme", "light");
+          } else {
+            root.setAttribute("data-theme", "dark");
+            localStorage.setItem("theme", "dark");
+          }
+        });
+      })();
+
+      // ===== SCROLL PROGRESS BAR + BACK TO TOP (digabung, throttle rAF) =====
+      (() => {
+        const bar = document.getElementById("scrollProgress");
+        const backBtn = document.getElementById("backToTop");
+        let ticking = false;
+
+        function updateOnScroll() {
+          const scrollTop = window.scrollY;
+          const docHeight =
+            document.documentElement.scrollHeight - window.innerHeight;
+          const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+          bar.style.width = pct + "%";
+          backBtn.classList.toggle("show", scrollTop > 400);
+          ticking = false;
+        }
+
+        function onScroll() {
+          if (!ticking) {
+            requestAnimationFrame(updateOnScroll);
+            ticking = true;
+          }
+        }
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll);
+        updateOnScroll();
+      })();
+
+      // ===== ACTIVE NAV LINK ON SCROLL =====
+      (() => {
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".nav-link");
+        if (!sections.length || !navLinks.length) return;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const id = entry.target.getAttribute("id");
+                navLinks.forEach((link) => {
+                  link.classList.toggle(
+                    "active",
+                    link.getAttribute("href") === "#" + id,
+                  );
+                });
+              }
+            });
+          },
+          { rootMargin: "-40% 0px -50% 0px", threshold: 0 },
+        );
+
+        sections.forEach((sec) => observer.observe(sec));
+      })();
+
+      // ===== BACK TO TOP CLICK =====
+      (() => {
+        const btn = document.getElementById("backToTop");
+        btn.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      })();
+
+      // ===== HERO STATS COUNTER =====
+      (() => {
+        const statEls = document.querySelectorAll(".stat-num[data-count]");
+        if (!statEls.length) return;
+
+        function animateCount(el) {
+          const target = parseInt(el.dataset.count, 10) || 0;
+          const suffix = el.dataset.suffix || "";
+          const duration = 1200;
+          const start = performance.now();
+
+          function step(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const value = Math.round(target * eased);
+            el.textContent = value + suffix;
+            if (progress < 1) {
+              requestAnimationFrame(step);
+            }
+          }
+          requestAnimationFrame(step);
+        }
+
+        const statObserver = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                animateCount(entry.target);
+                obs.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.5 },
+        );
+
+        statEls.forEach((el) => statObserver.observe(el));
+      })();
+    </script>
+  </body>
+</html>
