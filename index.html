@@ -77,7 +77,12 @@
   </head>
   <body>
     <!-- ===== INTRO PREMIUM ===== -->
-    <div id="introOverlay" aria-hidden="true">
+    <div
+      id="introOverlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Intro animasi portfolio"
+    >
       <!-- Canvas untuk partikel mengambang -->
       <canvas id="introCanvas"></canvas>
 
@@ -138,6 +143,18 @@
         <div class="io-bar-fill" id="ioBarFill"></div>
         <div class="io-bar-glow" id="ioBarGlow"></div>
       </div>
+
+      <!-- Tombol Skip -->
+      <button
+        class="io-skip"
+        id="introSkip"
+        type="button"
+        aria-label="Lewati intro"
+      >
+        Skip <i class="bi bi-skip-forward-fill"></i>
+      </button>
+    </div>
+    <!-- /#introOverlay -->
 
     <!-- ===== SCROLL PROGRESS BAR ===== -->
     <div class="scroll-progress" id="scrollProgress"></div>
@@ -207,18 +224,6 @@
                 <button class="lang-option" data-lang="it">🇮🇹 Italia</button>
                 <button class="lang-option" data-lang="nl">🇳🇱 Belanda</button>
               </div>
-            </li>
-            <li class="nav-item">
-              <button
-                class="theme-toggle"
-                id="themeToggle"
-                type="button"
-                translate="no"
-                aria-label="Ganti tema gelap/terang"
-              >
-                <i class="bi bi-moon-stars-fill theme-icon-dark"></i>
-                <i class="bi bi-sun-fill theme-icon-light"></i>
-              </button>
             </li>
           </ul>
         </div>
@@ -1179,9 +1184,9 @@
               <div class="tl2-card-era">Chapter 01</div>
               <h4 class="tl2-card-title">Awal Kehidupan</h4>
               <p class="tl2-card-desc">
-                Lahir di Medan, Sumatera Utara — kota yang kelak jadi
-                fondasi mimpi besar. Sejak kecil, layar komputer sudah jadi
-                magnet yang tak bisa diabaikan.
+                Lahir di Medan, Sumatera Utara — kota yang kelak jadi fondasi
+                mimpi besar. Sejak kecil, layar komputer sudah jadi magnet yang
+                tak bisa diabaikan.
               </p>
               <div class="tl2-card-tags">
                 <span><i class="bi bi-geo-alt-fill"></i> Medan</span>
@@ -1750,7 +1755,7 @@
                     <textarea
                       class="contact-input"
                       rows="5"
-                      name="pendapat anda"
+                      name="pesan"
                       required
                       placeholder="Tulis pesanmu di sini..."
                     ></textarea>
@@ -1781,8 +1786,7 @@
           <div class="footer-brand">
             <span class="footer-logo">Zikri.</span>
             <p class="footer-tagline">
-              Front-End Developer & UI Designer<br />SMK Swasta Mandiri,
-              Siantar.
+              Front-End Developer & UI Designer<br />SMK Swasta Mandiri, Medan.
             </p>
             <div class="footer-social">
               <a href="https://www.instagram.com/yo144484/" title="Instagram"
@@ -2662,11 +2666,8 @@
     <script>
       // ===== THEME — Always Light Mode =====
       (() => {
-        const root = document.documentElement;
-        // Always remove dark theme
-        root.removeAttribute("data-theme");
+        document.documentElement.removeAttribute("data-theme");
         localStorage.setItem("theme", "light");
-        // Theme toggle button stays decorative (shows sun icon)
       })();
 
       // ===== SCROLL PROGRESS BAR + BACK TO TOP (digabung, throttle rAF) =====
