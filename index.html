@@ -76,6 +76,45 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- ===== BUTTON LOADING SCREEN (lucu) ===== -->
+    <div id="btnLoadingOverlay" aria-hidden="true">
+      <div class="bls-card">
+        <div class="bls-mascot">
+          <span class="bls-blob"></span>
+          <span class="bls-ring"></span>
+          <span class="bls-sparkle bls-sparkle-1">✨</span>
+          <span class="bls-sparkle bls-sparkle-2">✨</span>
+          <span class="bls-sparkle bls-sparkle-3">✨</span>
+          <span class="bls-emoji" id="blsEmoji">🚀</span>
+        </div>
+        <div class="bls-text" id="blsText">
+          Tunggu bentar ya<span class="bls-dots"
+            ><span style="--d: 0">.</span><span style="--d: 1">.</span
+            ><span style="--d: 2">.</span></span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== TOAST NOTIFIKASI ===== -->
+    <div class="zk-toast" id="zkToast" role="status" aria-live="polite">
+      <div class="zk-toast-icon"><i class="bi bi-check-circle-fill"></i></div>
+      <div class="zk-toast-body">
+        <div class="zk-toast-title">Terima kasih! 🎉</div>
+        <div class="zk-toast-desc" id="zkToastDesc">
+          Pesan kamu sudah berhasil dikirim.
+        </div>
+      </div>
+      <button
+        type="button"
+        class="zk-toast-close"
+        id="zkToastClose"
+        aria-label="Tutup notifikasi"
+      >
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+
     <!-- ===== INTRO PREMIUM ===== -->
     <div
       id="introOverlay"
@@ -180,7 +219,7 @@
               <a class="nav-link" href="#about" translate="no">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#musik" translate="no">Musik</a>
+              <a class="nav-link" href="#proyek" translate="no">Proyek</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#prestasi" translate="no">Prestasi</a>
@@ -318,18 +357,16 @@
               data-aos-duration="700"
             >
               <div class="stat-item">
-                <span class="stat-num" data-count="16">0</span>
-                <span class="stat-label">Tahun</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-num" data-count="12" data-suffix="+">0</span>
+                <span class="stat-num">3+</span>
                 <span class="stat-label">Proyek</span>
               </div>
               <div class="stat-item">
-                <span class="stat-num" data-count="25" data-suffix=" 🏆"
-                  >0</span
-                >
-                <span class="stat-label">Prestasi</span>
+                <span class="stat-num">RPL</span>
+                <span class="stat-label">Jurusan</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num">7+</span>
+                <span class="stat-label">Teknologi</span>
               </div>
             </div>
 
@@ -339,8 +376,15 @@
               data-aos-delay="400"
               data-aos-duration="700"
             >
-              <a href="#prestasi" class="btn-accent">
-                <i class="bi bi-trophy"></i> Lihat Prestasi
+              <a href="#proyek" class="btn-accent">
+                <i class="bi bi-grid-3x3-gap-fill"></i> Lihat Proyek
+              </a>
+              <a
+                href="cv/CV-Zikri-Al-Bukhori.pdf"
+                download
+                class="btn-outline-accent"
+              >
+                <i class="bi bi-download"></i> Download CV
               </a>
               <a href="#contact" class="btn-outline-accent">
                 <i class="bi bi-send"></i> Hubungi Saya
@@ -356,8 +400,17 @@
               <a href="https://www.instagram.com/yo144484/" title="Instagram"
                 ><i class="bi bi-instagram"></i
               ></a>
-              <a href="https://github.com/trynvexa" title="GitHub"
+              <a
+                href="https://github.com/trynvexa"
+                title="GitHub"
+                target="_blank"
                 ><i class="bi bi-github"></i
+              ></a>
+              <a
+                href="https://linkedin.com/in/zikri-al-bukhori"
+                title="LinkedIn"
+                target="_blank"
+                ><i class="bi bi-linkedin"></i
               ></a>
               <a href="https://www.tiktok.com/@frince_nael7" title="TikTok"
                 ><i class="bi bi-tiktok"></i
@@ -383,341 +436,285 @@
 
     <!-- ===== ABOUT ===== -->
     <section id="about">
-      <div class="container" data-aos="fade-up" data-aos-duration="700">
-        <div class="text-center mb-5">
+      <!-- Ambient orbs -->
+      <div class="about-orb about-orb--1"></div>
+      <div class="about-orb about-orb--2"></div>
+
+      <div class="container" style="position: relative; z-index: 1">
+        <div
+          class="text-center mb-5"
+          data-aos="fade-up"
+          data-aos-duration="700"
+        >
           <span class="section-label">Tentang Saya</span>
           <h2 class="section-heading">Who I Am</h2>
           <div class="divider mx-auto"></div>
         </div>
 
-        <div class="about-layout">
-          <!-- Kiri: teks -->
+        <!-- ── BARIS 1: Bio + Info Cards ── -->
+        <div class="about-v2-top" data-aos="fade-up" data-aos-duration="700">
+          <!-- Kiri: Bio card besar -->
           <div
-            class="about-content"
+            class="about-bio-card"
             data-aos="fade-right"
             data-aos-duration="700"
+            data-aos-delay="50"
           >
-            <p class="about-text" id="aboutText"></p>
-            <div class="about-skills-marquee">
-              <div class="skills-track">
-                <!-- Set 1 -->
-                <div class="tech-icon-wrap">
-                  <div
-                    class="tech-icon"
-                    style="
-                      --icon-clr: #e34f26;
-                      --icon-bg: rgba(227, 79, 38, 0.08);
-                    "
-                  >
-                    <img
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-                      alt="HTML5"
-                    />
-                  </div>
-                  <span>HTML5</span>
-                </div>
-                <div class="tech-icon-wrap">
-                  <div
-                    class="tech-icon"
-                    style="
-                      --icon-clr: #264de4;
-                      --icon-bg: rgba(38, 77, 228, 0.08);
-                    "
-                  >
-                    <img
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-                      alt="CSS3"
-                    />
-                  </div>
-                  <span>CSS3</span>
-                </div>
-                <div class="tech-icon-wrap">
-                  <div
-                    class="tech-icon"
-                    style="
-                      --icon-clr: #f0db4f;
-                      --icon-bg: rgba(240, 219, 79, 0.12);
-                    "
-                  >
-                    <img
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                      alt="JavaScript"
-                    />
-                  </div>
-                  <span>JavaScript</span>
-                </div>
-                <div class="tech-icon-wrap">
-                  <div
-                    class="tech-icon"
-                    style="
-                      --icon-clr: #7952b3;
-                      --icon-bg: rgba(121, 82, 179, 0.08);
-                    "
-                  >
-                    <img
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
-                      alt="Bootstrap"
-                    />
-                  </div>
-                  <span>Bootstrap</span>
-                </div>
-                <div class="tech-icon-wrap">
-                  <div
-                    class="tech-icon"
-                    style="
-                      --icon-clr: #f24e1e;
-                      --icon-bg: rgba(242, 78, 30, 0.08);
-                    "
-                  >
-                    <img
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
-                      alt="Figma"
-                    />
-                  </div>
-                  <span>Figma</span>
-                </div>
-                <div class="tech-icon-wrap">
-                  <div
-                    class="tech-icon"
-                    style="
-                      --icon-clr: #24292f;
-                      --icon-bg: rgba(36, 41, 47, 0.07);
-                    "
-                  >
-                    <img
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-                      alt="GitHub"
-                    />
-                  </div>
-                  <span>GitHub</span>
-                </div>
-                <!-- Set 2 — duplikat biar seamless -->
-                <div class="tech-icon-wrap">
-                  <div
-                    class="tech-icon"
-                    style="
-                      --icon-clr: #e34f26;
-                      --icon-bg: rgba(227, 79, 38, 0.08);
-                    "
-                  >
-                    <img
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-                      alt="HTML5"
-                    />
-                  </div>
-                  <span>HTML5</span>
-                </div>
-                <div class="tech-icon-wrap">
-                  <div
-                    class="tech-icon"
-                    style="
-                      --icon-clr: #264de4;
-                      --icon-bg: rgba(38, 77, 228, 0.08);
-                    "
-                  >
-                    <img
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-                      alt="CSS3"
-                    />
-                  </div>
-                  <span>CSS3</span>
-                </div>
-                <div class="tech-icon-wrap">
-                  <div
-                    class="tech-icon"
-                    style="
-                      --icon-clr: #f0db4f;
-                      --icon-bg: rgba(240, 219, 79, 0.12);
-                    "
-                  >
-                    <img
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                      alt="JavaScript"
-                    />
-                  </div>
-                  <span>JavaScript</span>
-                </div>
-                <div class="tech-icon-wrap">
-                  <div
-                    class="tech-icon"
-                    style="
-                      --icon-clr: #7952b3;
-                      --icon-bg: rgba(121, 82, 179, 0.08);
-                    "
-                  >
-                    <img
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
-                      alt="Bootstrap"
-                    />
-                  </div>
-                  <span>Bootstrap</span>
-                </div>
-                <div class="tech-icon-wrap">
-                  <div
-                    class="tech-icon"
-                    style="
-                      --icon-clr: #f24e1e;
-                      --icon-bg: rgba(242, 78, 30, 0.08);
-                    "
-                  >
-                    <img
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
-                      alt="Figma"
-                    />
-                  </div>
-                  <span>Figma</span>
-                </div>
-                <div class="tech-icon-wrap">
-                  <div
-                    class="tech-icon"
-                    style="
-                      --icon-clr: #24292f;
-                      --icon-bg: rgba(36, 41, 47, 0.07);
-                    "
-                  >
-                    <img
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-                      alt="GitHub"
-                    />
-                  </div>
-                  <span>GitHub</span>
+            <div class="about-bio-header">
+              <div class="about-bio-avatar">
+                <img src="img/zikri.jpg" alt="Zikri" loading="lazy" />
+                <span class="about-bio-avail"><span></span></span>
+              </div>
+              <div>
+                <div class="about-bio-name">M. Zikri Al-Bukhori</div>
+                <div class="about-bio-role">
+                  Front-End Developer &amp; UI Designer
                 </div>
               </div>
+            </div>
+            <p class="about-bio-text" id="aboutText">
+              Saya adalah siswa SMK jurusan Rekayasa Perangkat Lunak (RPL) yang
+              memiliki minat dalam pengembangan web dan desain antarmuka. Dengan
+              semangat belajar yang tinggi dan disiplin, saya terus mengasah
+              skill untuk membangun pengalaman digital yang elegan dan berdampak
+              nyata.
+            </p>
+
+            <!-- Quick stats row -->
+            <div class="about-bio-stats">
+              <div class="about-bio-stat">
+                <span class="about-bio-stat-num">3+</span>
+                <span class="about-bio-stat-lbl">Proyek</span>
+              </div>
+              <div class="about-bio-stat-sep"></div>
+              <div class="about-bio-stat">
+                <span class="about-bio-stat-num">7+</span>
+                <span class="about-bio-stat-lbl">Teknologi</span>
+              </div>
+              <div class="about-bio-stat-sep"></div>
+              <div class="about-bio-stat">
+                <span class="about-bio-stat-num">2026</span>
+                <span class="about-bio-stat-lbl">Aktif</span>
+              </div>
+            </div>
+
+            <!-- CTA mini -->
+            <div class="about-bio-ctas">
+              <a href="#contact" class="about-cta-main"
+                ><i class="bi bi-send-fill"></i> Hubungi Saya</a
+              >
+              <a
+                href="cv/CV-Zikri-Al-Bukhori.pdf"
+                download
+                class="about-cta-ghost"
+                ><i class="bi bi-download"></i> CV</a
+              >
             </div>
           </div>
 
-          <!-- Kanan: info cards -->
-          <div class="about-cards" data-aos="fade-left" data-aos-duration="700">
-            <div class="about-info-card">
-              <div class="about-info-icon">
-                <i class="bi bi-mortarboard-fill"></i>
+          <!-- Kanan: Info cards grid -->
+          <div
+            class="about-v2-right"
+            data-aos="fade-left"
+            data-aos-duration="700"
+            data-aos-delay="100"
+          >
+            <!-- 4 info pills -->
+            <div class="about-pills-grid">
+              <div class="about-pill">
+                <div
+                  class="about-pill-icon"
+                  style="
+                    --pill-clr: #6366f1;
+                    --pill-bg: rgba(99, 102, 241, 0.1);
+                  "
+                >
+                  <i class="bi bi-mortarboard-fill"></i>
+                </div>
+                <div>
+                  <div class="about-pill-label">Sekolah</div>
+                  <div class="about-pill-val">SMK Swasta Mandiri</div>
+                </div>
               </div>
-              <div>
-                <div class="about-info-label">Sekolah</div>
-                <div class="about-info-val">SMK Swasta Mandiri, Medan</div>
+              <div class="about-pill">
+                <div
+                  class="about-pill-icon"
+                  style="--pill-clr: #06b6d4; --pill-bg: rgba(6, 182, 212, 0.1)"
+                >
+                  <i class="bi bi-geo-alt-fill"></i>
+                </div>
+                <div>
+                  <div class="about-pill-label">Lokasi</div>
+                  <div class="about-pill-val">Medan, Sumatera Utara</div>
+                </div>
+              </div>
+              <div class="about-pill">
+                <div
+                  class="about-pill-icon"
+                  style="
+                    --pill-clr: #8b5cf6;
+                    --pill-bg: rgba(139, 92, 246, 0.1);
+                  "
+                >
+                  <i class="bi bi-controller"></i>
+                </div>
+                <div>
+                  <div class="about-pill-label">Hobi</div>
+                  <div class="about-pill-val">Esports &amp; Coding</div>
+                </div>
+              </div>
+              <div class="about-pill">
+                <div
+                  class="about-pill-icon"
+                  style="
+                    --pill-clr: #f59e0b;
+                    --pill-bg: rgba(245, 158, 11, 0.1);
+                  "
+                >
+                  <i class="bi bi-star-fill"></i>
+                </div>
+                <div>
+                  <div class="about-pill-label">Fokus</div>
+                  <div class="about-pill-val">Front-End &amp; UI/UX</div>
+                </div>
               </div>
             </div>
-            <div class="about-info-card">
-              <div class="about-info-icon">
-                <i class="bi bi-geo-alt-fill"></i>
+
+            <!-- Skill progress bars -->
+            <div class="about-skills-block">
+              <div class="about-skill-label-row">
+                <span class="about-skill-name">HTML &amp; CSS</span>
+                <span class="about-skill-pct">92%</span>
               </div>
-              <div>
-                <div class="about-info-label">Lokasi</div>
-                <div class="about-info-val">Medan, Sumatera Utara</div>
+              <div class="about-skill-bar">
+                <div
+                  class="about-skill-fill"
+                  style="--w: 92%; --clr: #e34f26"
+                ></div>
               </div>
-            </div>
-            <div class="about-info-card">
-              <div class="about-info-icon">
-                <i class="bi bi-controller"></i>
+
+              <div class="about-skill-label-row">
+                <span class="about-skill-name">JavaScript</span>
+                <span class="about-skill-pct">75%</span>
               </div>
-              <div>
-                <div class="about-info-label">Hobi</div>
-                <div class="about-info-val">Esports & Web Development</div>
+              <div class="about-skill-bar">
+                <div
+                  class="about-skill-fill"
+                  style="--w: 75%; --clr: #f0db4f"
+                ></div>
               </div>
-            </div>
-            <div class="about-info-card">
-              <div class="about-info-icon"><i class="bi bi-star-fill"></i></div>
-              <div>
-                <div class="about-info-label">Fokus</div>
-                <div class="about-info-val">Front-End & UI/UX Design</div>
+
+              <div class="about-skill-label-row">
+                <span class="about-skill-name">Bootstrap</span>
+                <span class="about-skill-pct">85%</span>
+              </div>
+              <div class="about-skill-bar">
+                <div
+                  class="about-skill-fill"
+                  style="--w: 85%; --clr: #7952b3"
+                ></div>
+              </div>
+
+              <div class="about-skill-label-row">
+                <span class="about-skill-name">PHP &amp; MySQL</span>
+                <span class="about-skill-pct">60%</span>
+              </div>
+              <div class="about-skill-bar">
+                <div
+                  class="about-skill-fill"
+                  style="--w: 60%; --clr: #6366f1"
+                ></div>
+              </div>
+
+              <div class="about-skill-label-row">
+                <span class="about-skill-name">UI Design</span>
+                <span class="about-skill-pct">80%</span>
+              </div>
+              <div class="about-skill-bar">
+                <div
+                  class="about-skill-fill"
+                  style="--w: 80%; --clr: #06b6d4"
+                ></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ===== IMPIAN (digabung ke About) ===== -->
+        <!-- ── BARIS 3: Visi / Impian ── -->
         <div
-          class="about-impian-wrap"
+          class="about-vision-wrap"
           data-aos="fade-up"
           data-aos-duration="700"
-          data-aos-delay="100"
+          data-aos-delay="80"
         >
-          <div class="about-impian-label">
+          <div class="text-center mb-4">
             <span class="section-label" style="font-size: 0.7rem"
               >Visi Masa Depan</span
             >
-            <p class="about-impian-tagline">
+            <p class="about-vision-sub">
               Mimpi yang menjadi bahan bakar setiap baris kode.
             </p>
           </div>
-          <div class="impian-grid">
-            <!-- Main dream card -->
-            <div class="impian-main-card">
-              <div class="impian-icon-wrap">
-                <div class="impian-icon-ring"></div>
-                <div class="impian-icon">
-                  <i class="bi bi-buildings-fill"></i>
-                </div>
-              </div>
-              <div class="impian-main-content">
-                <div class="impian-chip">🚀 Tujuan Utama</div>
-                <h3 class="impian-title">Mendirikan Perusahaan Teknologi</h3>
-                <p class="impian-desc">
-                  Visi terbesarku adalah membangun perusahaan teknologi sendiri
-                  — tempat di mana inovasi bertemu kreativitas, dan produk
-                  digital yang dibuat bisa berdampak nyata bagi jutaan orang di
-                  Indonesia dan dunia.
-                </p>
-                <div class="impian-tags">
-                  <span class="impian-tag-item"
-                    ><i class="bi bi-code-slash"></i> Tech Startup</span
-                  >
-                  <span class="impian-tag-item"
-                    ><i class="bi bi-people-fill"></i> Impact-Driven</span
-                  >
-                  <span class="impian-tag-item"
-                    ><i class="bi bi-globe"></i> Global Reach</span
-                  >
-                </div>
+
+          <div class="about-vision-grid">
+            <!-- Card utama -->
+            <div class="about-vision-main">
+              <div class="avm-glow"></div>
+              <div class="avm-icon"><i class="bi bi-buildings-fill"></i></div>
+              <div class="avm-chip">🚀 Tujuan Utama</div>
+              <h3 class="avm-title">Mendirikan Perusahaan Teknologi</h3>
+              <p class="avm-desc">
+                Visi terbesarku adalah membangun perusahaan teknologi sendiri —
+                tempat di mana inovasi bertemu kreativitas, dan produk digital
+                yang dibuat bisa berdampak nyata bagi jutaan orang di Indonesia
+                dan dunia.
+              </p>
+              <div class="avm-tags">
+                <span><i class="bi bi-code-slash"></i> Tech Startup</span>
+                <span><i class="bi bi-people-fill"></i> Impact-Driven</span>
+                <span><i class="bi bi-globe"></i> Global Reach</span>
               </div>
             </div>
 
-            <!-- Milestone cards -->
-            <div class="impian-milestones">
-              <div
-                class="impian-milestone"
-                data-aos="fade-left"
-                data-aos-delay="150"
-              >
-                <div class="milestone-num">01</div>
-                <div>
-                  <div class="milestone-label">Sekarang</div>
-                  <div class="milestone-val">Kuasai Front-End & UI/UX</div>
+            <!-- Milestone timeline vertikal -->
+            <div class="about-vision-milestones">
+              <div class="avm-step" data-aos="fade-left" data-aos-delay="100">
+                <div class="avm-step-dot"><span>01</span></div>
+                <div class="avm-step-line"></div>
+                <div class="avm-step-body">
+                  <div class="avm-step-when">Sekarang</div>
+                  <div class="avm-step-what">Kuasai Front-End &amp; UI/UX</div>
                 </div>
               </div>
-              <div
-                class="impian-milestone"
-                data-aos="fade-left"
-                data-aos-delay="200"
-              >
-                <div class="milestone-num">02</div>
-                <div>
-                  <div class="milestone-label">2026 – 2027</div>
-                  <div class="milestone-val">
-                    Bangun portofolio & freelance projects
+              <div class="avm-step" data-aos="fade-left" data-aos-delay="160">
+                <div class="avm-step-dot"><span>02</span></div>
+                <div class="avm-step-line"></div>
+                <div class="avm-step-body">
+                  <div class="avm-step-when">2026 – 2027</div>
+                  <div class="avm-step-what">
+                    Bangun portofolio &amp; freelance projects
                   </div>
                 </div>
               </div>
-              <div
-                class="impian-milestone"
-                data-aos="fade-left"
-                data-aos-delay="250"
-              >
-                <div class="milestone-num">03</div>
-                <div>
-                  <div class="milestone-label">2028+</div>
-                  <div class="milestone-val">Launch startup pertama</div>
+              <div class="avm-step" data-aos="fade-left" data-aos-delay="220">
+                <div class="avm-step-dot"><span>03</span></div>
+                <div class="avm-step-line"></div>
+                <div class="avm-step-body">
+                  <div class="avm-step-when">2028+</div>
+                  <div class="avm-step-what">Launch startup pertama</div>
                 </div>
               </div>
               <div
-                class="impian-milestone impian-milestone--final"
+                class="avm-step avm-step--final"
                 data-aos="fade-left"
-                data-aos-delay="300"
+                data-aos-delay="280"
               >
-                <div class="milestone-num">🏆</div>
-                <div>
-                  <div class="milestone-label">Tujuan Akhir</div>
-                  <div class="milestone-val">
+                <div class="avm-step-dot avm-step-dot--gold">
+                  <span>🏆</span>
+                </div>
+                <div class="avm-step-body">
+                  <div class="avm-step-when">Tujuan Akhir</div>
+                  <div class="avm-step-what">
                     CEO perusahaan teknologi Indonesia
                   </div>
                 </div>
@@ -728,319 +725,258 @@
       </div>
     </section>
 
-    <!-- ===== MUSIK ===== -->
-    <section id="musik">
-      <!-- Ambient orbs -->
-      <div class="musik-orb musik-orb--1"></div>
-      <div class="musik-orb musik-orb--2"></div>
-
-      <div class="container" style="position: relative; z-index: 1">
+    <!-- ===== PROYEK ===== -->
+    <section id="proyek">
+      <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
-          <span class="section-label">
-            <i class="bi bi-music-note-beamed me-1"></i> Playlist
-          </span>
-          <h2 class="section-heading">Lagu Favorit</h2>
+          <span class="section-label">Portofolio</span>
+          <h2 class="section-heading">Proyek Saya</h2>
           <div class="divider mx-auto"></div>
-          <p class="section-sub mt-3">Lagu yang selalu menemani saat coding.</p>
+          <p class="section-sub mt-3">
+            Proyek nyata yang saya bangun untuk mengasah skill dan menunjukkan
+            kemampuan.
+          </p>
         </div>
 
-        <div class="musik-player" data-aos="fade-up" data-aos-delay="100">
-          <!-- ===== LEFT: Player Card ===== -->
-          <div class="player-display">
-            <!-- Noise texture overlay -->
-            <div class="player-noise"></div>
-
-            <!-- Album Art -->
-            <div class="player-art-wrap">
-              <div class="player-vinyl" id="playerVinyl">
-                <!-- Grooves -->
-                <div class="vinyl-groove v1"></div>
-                <div class="vinyl-groove v2"></div>
-                <div class="vinyl-groove v3"></div>
-                <!-- Inner label with artist photo -->
-                <div class="vinyl-label" id="vinylLabel">
-                  <img
-                    src="img/artist/cortis.jpg"
-                    alt="Artist"
-                    class="vinyl-artist-photo"
-                    id="vinylArtistPhoto"
-                    onerror="
-                      this.style.display = 'none';
-                      document.getElementById(
-                        'vinylLabelFallback',
-                      ).style.display = 'flex';
-                    "
-                  />
-                  <div class="vinyl-label-fallback" id="vinylLabelFallback">
-                    <div class="vinyl-label-lines">
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                    </div>
-                  </div>
-                  <div class="vinyl-hole"></div>
-                </div>
-                <!-- Shine -->
-                <div class="vinyl-shine"></div>
+        <div class="proyek-grid" id="proyekGrid">
+          <!-- Proyek 1: Toko Kue (TK) -->
+          <div class="proyek-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="proyek-img-wrap">
+              <!-- Simpan screenshot ke img/proyek/toko-kue.jpg -->
+              <img
+                src="img/proyek/kue.jpg"
+                alt="Screenshot Website Toko Kue"
+                class="proyek-img-real"
+                loading="lazy"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <div
+                class="proyek-img-placeholder proyek-img-tk"
+                style="display: none"
+              >
+                <i class="bi bi-shop"></i>
+                <span>Toko Kue</span>
               </div>
-              <!-- Needle arm -->
-              <div class="player-needle" id="playerNeedle">
-                <div class="needle-arm"></div>
-                <div class="needle-head"></div>
+              <div class="proyek-overlay">
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener"
+                  class="proyek-preview-btn"
+                >
+                  <i class="bi bi-eye"></i> Preview
+                </a>
               </div>
+              <div class="proyek-img-glow"></div>
             </div>
-
-            <!-- Waveform visualizer -->
-            <div class="player-waveform" id="playerWaveform">
-              <canvas id="waveCanvas" width="220" height="40"></canvas>
-            </div>
-
-            <!-- Song info -->
-            <div class="player-info">
-              <div class="player-now-badge">
-                <span class="now-dot" id="nowDot"></span>
-                <span id="nowLabel">Now Playing</span>
+            <div class="proyek-body">
+              <div class="proyek-header-row">
+                <h5 class="proyek-title">Website Toko Kue</h5>
+                <span class="proyek-year">2025</span>
               </div>
-              <div class="player-song-name" id="playerSongName">RedRed</div>
-              <div class="player-artist" id="playerArtist">Cortis</div>
-
-              <!-- Progress bar with time -->
-              <div class="player-progress-wrap">
-                <div class="player-bar" id="playerBar">
-                  <div class="player-bar-track"></div>
-                  <div class="player-bar-fill" id="playerBarFill"></div>
-                  <div class="player-bar-thumb" id="playerThumb"></div>
-                </div>
-                <div class="player-time">
-                  <span id="playerCurrent">0:00</span>
-                  <span id="playerDuration">–:––</span>
-                </div>
+              <p class="proyek-desc">
+                Website toko kue online yang menampilkan katalog produk, menu
+                kue lengkap dengan harga, dan informasi kontak pemesanan. Desain
+                manis dan responsif untuk semua perangkat.
+              </p>
+              <div class="proyek-tech-tags">
+                <span class="proyek-tech"
+                  ><i class="bi bi-filetype-html"></i> HTML</span
+                >
+                <span class="proyek-tech"
+                  ><i class="bi bi-filetype-css"></i> CSS</span
+                >
+                <span class="proyek-tech"
+                  ><i class="bi bi-filetype-js"></i> JS</span
+                >
+                <span class="proyek-tech"
+                  ><i class="bi bi-bag-heart-fill"></i> E-Commerce</span
+                >
               </div>
-
-              <!-- Controls -->
-              <div class="player-controls">
-                <button
-                  class="player-btn player-btn--shuffle"
-                  id="playerShuffle"
-                  title="Shuffle"
+              <div class="proyek-divider"></div>
+              <div class="proyek-actions">
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn-proyek-demo"
                 >
-                  <i class="bi bi-shuffle"></i>
-                </button>
-                <button
-                  class="player-btn"
-                  id="playerPrev"
-                  aria-label="Sebelumnya"
+                  <i class="bi bi-box-arrow-up-right"></i> Kunjungi Situs
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn-proyek-github"
                 >
-                  <i class="bi bi-skip-start-fill"></i>
-                </button>
-                <button
-                  class="player-btn player-btn--play"
-                  id="playerPlay"
-                  aria-label="Play/Pause"
-                >
-                  <i class="bi bi-play-fill" id="playerPlayIcon"></i>
-                </button>
-                <button
-                  class="player-btn"
-                  id="playerNext"
-                  aria-label="Berikutnya"
-                >
-                  <i class="bi bi-skip-end-fill"></i>
-                </button>
-                <button
-                  class="player-btn player-btn--repeat"
-                  id="playerRepeat"
-                  title="Repeat"
-                >
-                  <i class="bi bi-repeat"></i>
-                </button>
-              </div>
-
-              <!-- Volume -->
-              <div class="player-volume">
-                <i class="bi bi-volume-down-fill vol-icon"></i>
-                <div class="vol-bar">
-                  <div class="vol-fill" id="volFill" style="width: 75%"></div>
-                </div>
-                <i class="bi bi-volume-up-fill vol-icon"></i>
+                  <i class="bi bi-github"></i> Source
+                </a>
               </div>
             </div>
           </div>
 
-          <!-- ===== RIGHT: Tracklist ===== -->
-          <div class="player-tracklist">
-            <div class="tracklist-header">
-              <span class="tracklist-title">
-                <i class="bi bi-collection-play-fill"></i> Playlist
-              </span>
-              <span class="tracklist-count">6 lagu</span>
+          <!-- Proyek 2: Website Ayam Penyet -->
+          <div class="proyek-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="proyek-img-wrap">
+              <!-- Simpan screenshot ke img/proyek/ayam-penyet.jpg -->
+              <img
+                src="img/proyek/ayam.jpg"
+                alt="Screenshot Website Ayam Penyet"
+                class="proyek-img-real"
+                loading="lazy"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <div
+                class="proyek-img-placeholder proyek-img-ap"
+                style="display: none"
+              >
+                <i class="bi bi-egg-fried"></i>
+                <span>Ayam Penyet</span>
+              </div>
+              <div class="proyek-overlay">
+                <a
+                  href="https://web-ayam.vercel.app/"
+                  target="_blank"
+                  rel="noopener"
+                  class="proyek-preview-btn"
+                >
+                  <i class="bi bi-eye"></i> Preview
+                </a>
+              </div>
+              <div class="proyek-img-glow"></div>
             </div>
-
-            <div class="tracklist-body">
-              <div
-                class="track-item active"
-                data-index="0"
-                data-spotify="https://open.spotify.com/track/2fCwv2ppU5nTRTckomIGsd"
-              >
-                <div class="track-num-wrap">
-                  <span class="track-num">1</span>
-                  <div class="track-eq" id="eq0">
-                    <span></span><span></span><span></span><span></span>
-                  </div>
-                </div>
-                <div class="track-cover" style="--cover-hue: 255"></div>
-                <div class="track-info">
-                  <div class="track-title">RedRed</div>
-                  <div class="track-artist">Cortis</div>
-                </div>
-                <div class="track-meta">
-                  <a
-                    class="track-spotify"
-                    href="https://open.spotify.com/track/2fCwv2ppU5nTRTckomIGsd"
-                    target="_blank"
-                    aria-label="Buka di Spotify"
-                    ><i class="bi bi-spotify"></i
-                  ></a>
-                </div>
+            <div class="proyek-body">
+              <div class="proyek-header-row">
+                <h5 class="proyek-title">Website Ayam Penyet</h5>
+                <span class="proyek-year">2025</span>
               </div>
-
-              <div
-                class="track-item"
-                data-index="1"
-                data-spotify="https://open.spotify.com/track/2bAQsNqdo62T8akkIvWzGl"
-              >
-                <div class="track-num-wrap">
-                  <span class="track-num">2</span>
-                  <div class="track-eq" id="eq1">
-                    <span></span><span></span><span></span><span></span>
-                  </div>
-                </div>
-                <div class="track-cover" style="--cover-hue: 320"></div>
-                <div class="track-info">
-                  <div class="track-title">Lemontang</div>
-                  <div class="track-artist">Hearts2Hearts</div>
-                </div>
-                <div class="track-meta">
-                  <a
-                    class="track-spotify"
-                    href="https://open.spotify.com/track/2bAQsNqdo62T8akkIvWzGl"
-                    target="_blank"
-                    aria-label="Buka di Spotify"
-                    ><i class="bi bi-spotify"></i
-                  ></a>
-                </div>
+              <p class="proyek-desc">
+                Website restoran Ayam Penyet dengan tampilan menggugah selera,
+                menampilkan menu, harga, jam operasional, dan lokasi. Didesain
+                modern dengan nuansa hangat khas kuliner Indonesia.
+              </p>
+              <div class="proyek-tech-tags">
+                <span class="proyek-tech"
+                  ><i class="bi bi-filetype-html"></i> HTML</span
+                >
+                <span class="proyek-tech"
+                  ><i class="bi bi-filetype-css"></i> CSS</span
+                >
+                <span class="proyek-tech"
+                  ><i class="bi bi-filetype-js"></i> JS</span
+                >
+                <span class="proyek-tech"
+                  ><i class="bi bi-cup-hot-fill"></i> Kuliner</span
+                >
               </div>
-
-              <div
-                class="track-item"
-                data-index="2"
-                data-spotify="https://open.spotify.com/track/47isJpIIO8m7BJEhiFhnaf"
-              >
-                <div class="track-num-wrap">
-                  <span class="track-num">3</span>
-                  <div class="track-eq" id="eq2">
-                    <span></span><span></span><span></span><span></span>
-                  </div>
-                </div>
-                <div class="track-cover" style="--cover-hue: 190"></div>
-                <div class="track-info">
-                  <div class="track-title">Rude</div>
-                  <div class="track-artist">Hearts2Hearts</div>
-                </div>
-                <div class="track-meta">
-                  <a
-                    class="track-spotify"
-                    href="https://open.spotify.com/track/47isJpIIO8m7BJEhiFhnaf"
-                    target="_blank"
-                    aria-label="Buka di Spotify"
-                    ><i class="bi bi-spotify"></i
-                  ></a>
-                </div>
+              <div class="proyek-divider"></div>
+              <div class="proyek-actions">
+                <a
+                  href="https://web-ayam.vercel.app/"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn-proyek-demo"
+                >
+                  <i class="bi bi-box-arrow-up-right"></i> Kunjungi Situs
+                </a>
+                <a
+                  href="https://github.com/trynvexa/web-ayam"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn-proyek-github"
+                >
+                  <i class="bi bi-github"></i> Source
+                </a>
               </div>
+            </div>
+          </div>
 
+          <!-- Proyek 3: Halaman Login -->
+          <div class="proyek-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="proyek-img-wrap">
+              <!-- Simpan screenshot ke img/proyek/halaman-login.jpg -->
+              <img
+                src="img/proyek/login.jpg"
+                alt="Screenshot Halaman Login"
+                class="proyek-img-real"
+                loading="lazy"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
               <div
-                class="track-item"
-                data-index="3"
-                data-spotify="https://open.spotify.com/track/33KU9huHP1Lv1UWWVkuTYd"
+                class="proyek-img-placeholder proyek-img-login"
+                style="display: none"
               >
-                <div class="track-num-wrap">
-                  <span class="track-num">4</span>
-                  <div class="track-eq" id="eq3">
-                    <span></span><span></span><span></span><span></span>
-                  </div>
-                </div>
-                <div class="track-cover" style="--cover-hue: 30"></div>
-                <div class="track-info">
-                  <div class="track-title">Fashion</div>
-                  <div class="track-artist">Cortis</div>
-                </div>
-                <div class="track-meta">
-                  <a
-                    class="track-spotify"
-                    href="https://open.spotify.com/track/33KU9huHP1Lv1UWWVkuTYd"
-                    target="_blank"
-                    aria-label="Buka di Spotify"
-                    ><i class="bi bi-spotify"></i
-                  ></a>
-                </div>
+                <i class="bi bi-shield-lock-fill"></i>
+                <span>Halaman Login</span>
               </div>
-
-              <div
-                class="track-item"
-                data-index="4"
-                data-spotify="https://open.spotify.com/track/6OWWZtNQORY1McaZmOrwhc"
-              >
-                <div class="track-num-wrap">
-                  <span class="track-num">5</span>
-                  <div class="track-eq" id="eq4">
-                    <span></span><span></span><span></span><span></span>
-                  </div>
-                </div>
-                <div class="track-cover" style="--cover-hue: 140"></div>
-                <div class="track-info">
-                  <div class="track-title">Go!</div>
-                  <div class="track-artist">Cortis</div>
-                </div>
-                <div class="track-meta">
-                  <a
-                    class="track-spotify"
-                    href="https://open.spotify.com/track/6OWWZtNQORY1McaZmOrwhc"
-                    target="_blank"
-                    aria-label="Buka di Spotify"
-                    ><i class="bi bi-spotify"></i
-                  ></a>
-                </div>
+              <div class="proyek-overlay">
+                <a
+                  href="https://trynvexa.github.io/smk-login/"
+                  target="_blank"
+                  rel="noopener"
+                  class="proyek-preview-btn"
+                >
+                  <i class="bi bi-eye"></i> Preview
+                </a>
               </div>
-
-              <div
-                class="track-item"
-                data-index="5"
-                data-spotify="https://open.spotify.com/track/4W8eJpN83cJ3lQiqfvpctb"
-              >
-                <div class="track-num-wrap">
-                  <span class="track-num">6</span>
-                  <div class="track-eq" id="eq5">
-                    <span></span><span></span><span></span><span></span>
-                  </div>
-                </div>
-                <div class="track-cover" style="--cover-hue: 60"></div>
-                <div class="track-info">
-                  <div class="track-title">Impostor Syndrome</div>
-                  <div class="track-artist">Sidney Gish</div>
-                </div>
-                <div class="track-meta">
-                  <a
-                    class="track-spotify"
-                    href="https://open.spotify.com/track/4W8eJpN83cJ3lQiqfvpctb"
-                    target="_blank"
-                    aria-label="Buka di Spotify"
-                    ><i class="bi bi-spotify"></i
-                  ></a>
-                </div>
+              <div class="proyek-img-glow"></div>
+            </div>
+            <div class="proyek-body">
+              <div class="proyek-header-row">
+                <h5 class="proyek-title">Halaman Login</h5>
+                <span class="proyek-year">2025</span>
+              </div>
+              <p class="proyek-desc">
+                Desain halaman login modern dan elegan dengan animasi smooth,
+                validasi form, dan tampilan yang bersih. Mendukung mode
+                show/hide password dan responsif di semua ukuran layar.
+              </p>
+              <div class="proyek-tech-tags">
+                <span class="proyek-tech"
+                  ><i class="bi bi-filetype-html"></i> HTML</span
+                >
+                <span class="proyek-tech"
+                  ><i class="bi bi-filetype-css"></i> CSS</span
+                >
+                <span class="proyek-tech"
+                  ><i class="bi bi-filetype-js"></i> JS</span
+                >
+                <span class="proyek-tech"
+                  ><i class="bi bi-lock-fill"></i> Auth UI</span
+                >
+              </div>
+              <div class="proyek-divider"></div>
+              <div class="proyek-actions">
+                <a
+                  href="https://trynvexa.github.io/smk-login/"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn-proyek-demo"
+                >
+                  <i class="bi bi-box-arrow-up-right"></i> Kunjungi Situs
+                </a>
+                <a
+                  href="https://github.com/trynvexa/smk-login"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn-proyek-github"
+                >
+                  <i class="bi bi-github"></i> Source
+                </a>
               </div>
             </div>
           </div>
         </div>
+        <!-- /proyek-grid -->
       </div>
     </section>
 
@@ -1067,6 +1003,7 @@
                 src="img/project/sertifikat1.jpg"
                 alt="Juara 1 MLBB"
                 class="prestasi-img"
+                loading="lazy"
               />
               <div class="prestasi-img-overlay"></div>
               <div class="prestasi-rank">
@@ -1092,6 +1029,7 @@
                 src="img/project/sertifikat2.jpg"
                 alt="Tournament Player"
                 class="prestasi-img"
+                loading="lazy"
               />
               <div class="prestasi-img-overlay"></div>
             </div>
@@ -1112,6 +1050,7 @@
                 src="img/project/sertifikat3.jpg"
                 alt="Esports Experience"
                 class="prestasi-img"
+                loading="lazy"
               />
               <div class="prestasi-img-overlay"></div>
             </div>
@@ -1555,22 +1494,46 @@
         <!-- Thumbnail strip -->
         <div class="gallery-thumbs" id="galleryThumbs">
           <div class="thumb-item active" data-index="0">
-            <img src="img/Gallery/thumbnail/1.jpg" alt="Thumb 1" />
+            <img
+              src="img/Gallery/thumbnail/1.jpg"
+              alt="Thumb 1"
+              loading="lazy"
+            />
           </div>
           <div class="thumb-item" data-index="1">
-            <img src="img/Gallery/thumbnail/2.jpg" alt="Thumb 2" />
+            <img
+              src="img/Gallery/thumbnail/2.jpg"
+              alt="Thumb 2"
+              loading="lazy"
+            />
           </div>
           <div class="thumb-item" data-index="2">
-            <img src="img/Gallery/thumbnail/3.jpg" alt="Thumb 3" />
+            <img
+              src="img/Gallery/thumbnail/3.jpg"
+              alt="Thumb 3"
+              loading="lazy"
+            />
           </div>
           <div class="thumb-item" data-index="3">
-            <img src="img/Gallery/thumbnail/4.jpg" alt="Thumb 4" />
+            <img
+              src="img/Gallery/thumbnail/4.jpg"
+              alt="Thumb 4"
+              loading="lazy"
+            />
           </div>
           <div class="thumb-item" data-index="4">
-            <img src="img/Gallery/thumbnail/5.jpg" alt="Thumb 5" />
+            <img
+              src="img/Gallery/thumbnail/5.jpg"
+              alt="Thumb 5"
+              loading="lazy"
+            />
           </div>
           <div class="thumb-item" data-index="5">
-            <img src="img/Gallery/thumbnail/6.jpg" alt="Thumb 6" />
+            <img
+              src="img/Gallery/thumbnail/6.jpg"
+              alt="Thumb 6"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
@@ -1720,19 +1683,6 @@
                 <p class="contact-form-sub">Biasanya balas dalam 1×24 jam</p>
               </div>
 
-              <div
-                class="alert alert-success alert-dismissible fade show d-none my-alert"
-                role="alert"
-              >
-                <i class="bi bi-check-circle-fill me-2"></i
-                ><strong>Terima kasih!</strong> Pesan kamu berhasil dikirim.
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="alert"
-                ></button>
-              </div>
-
               <form name="zikri-contact-form">
                 <div class="contact-form-group">
                   <label class="contact-form-label">Nama Lengkap</label>
@@ -1858,7 +1808,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/TextPlugin.min.js"></script>
 
     <script>
-      AOS.init({ once: true, offset: 60 });
+      AOS.init({ once: false, mirror: true, offset: 60 });
 
       // ===== INTRO PREMIUM =====
       (function () {
@@ -2275,21 +2225,21 @@
       gsap.to("#aboutText", {
         duration: 4,
         delay: 0.5,
-        text: "Saya adalah pelajar dari SMK Swasta Mandiri dan seorang Web Developer yang fokus pada pengembangan Front-End. Saya terus mengembangkan kemampuan dalam membuat website modern, responsif, dan interaktif dengan desain yang menarik dan pengalaman pengguna yang nyaman.",
+        text: "Saya adalah pelajar SMK Swasta Mandiri yang berfokus pada pengembangan Front-End. Saya membangun website modern, responsif, dan interaktif dengan memadukan desain yang estetis serta pengalaman pengguna yang nyaman, dan terus mengasah kemampuan melalui proyek-proyek nyata.",
       });
 
       [
         {
           id: "#cardText1",
-          text: "Berhasil meraih Juara 1 pada turnamen MLBB Anomali Store Season 1.",
+          text: "Meraih gelar Juara 1 pada turnamen MLBB Anomali Store Season 1 berkat strategi tim dan koordinasi yang matang.",
         },
         {
           id: "#cardText2",
-          text: "Aktif mengikuti turnamen MLBB untuk meningkatkan skill bermain.",
+          text: "Rutin berpartisipasi dalam berbagai turnamen MLBB sebagai sarana mengasah strategi dan kemampuan bermain.",
         },
         {
           id: "#cardText3",
-          text: "Mengembangkan teamwork dan strategi dalam dunia kompetitif MLBB.",
+          text: "Membangun kerja sama tim dan pola pikir strategis melalui pengalaman kompetitif di dunia esports MLBB.",
         },
       ].forEach((c, i) =>
         gsap.to(c.id, { duration: 3, delay: 1 + i * 0.4, text: c.text }),
@@ -2518,7 +2468,6 @@
       const form = document.forms["zikri-contact-form"];
       const btnKirim = document.querySelector(".btn-kirim-new");
       const btnLoad = document.querySelector(".btn-loading-new");
-      const myAlert = document.querySelector(".my-alert");
 
       form.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -2532,7 +2481,10 @@
           .then(() => {
             btnLoad.classList.add("d-none");
             btnKirim.classList.remove("d-none");
-            myAlert.classList.remove("d-none");
+            showZkToast(
+              "Terima kasih! 🎉",
+              "Pesan kamu sudah berhasil dikirim, aku akan segera balas ya.",
+            );
             form.reset();
           })
           .catch(() => {
@@ -2542,20 +2494,131 @@
       });
     </script>
 
-    <!-- Google Translate -->
+    <!-- ===== BUTTON LOADING SCREEN + TOAST NOTIFIKASI ===== -->
+    <script>
+      (function () {
+        /* ---------- Toast notifikasi ---------- */
+        const toastEl = document.getElementById("zkToast");
+        const toastTitle = toastEl.querySelector(".zk-toast-title");
+        const toastDesc = document.getElementById("zkToastDesc");
+        const toastClose = document.getElementById("zkToastClose");
+        let toastTimer = null;
+
+        window.showZkToast = function (title, desc, duration = 4500) {
+          toastTitle.textContent = title;
+          toastDesc.textContent = desc;
+          toastEl.classList.add("show");
+          clearTimeout(toastTimer);
+          toastTimer = setTimeout(() => {
+            toastEl.classList.remove("show");
+          }, duration);
+        };
+
+        toastClose.addEventListener("click", () => {
+          toastEl.classList.remove("show");
+          clearTimeout(toastTimer);
+        });
+
+        /* ---------- Loading screen lucu tiap tombol ditekan ---------- */
+        const overlay = document.getElementById("btnLoadingOverlay");
+        const blsEmoji = document.getElementById("blsEmoji");
+        const blsText = document.getElementById("blsText");
+
+        const EMOJIS = ["🚀", "✨", "🎯", "🛠️", "⚡", "🌈"];
+        const MESSAGES = [
+          "Tunggu bentar ya",
+          "Lagi disiapin nih",
+          "Bentar, lagi meluncur",
+          "Sat set dulu ya",
+          "Loading kece dulu",
+        ];
+
+        function pickRandom(arr) {
+          return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        const LOAD_SELECTOR = [
+          ".hero-cta .btn-accent",
+          ".hero-cta .btn-outline-accent",
+          ".about-cta-main",
+          ".about-cta-ghost",
+          ".footer-cta",
+          ".btn-proyek-demo",
+          ".btn-proyek-github",
+          ".proyek-preview-btn",
+          ".gallery-zoom-btn",
+        ].join(",");
+
+        document.addEventListener(
+          "click",
+          function (e) {
+            const btn = e.target.closest(LOAD_SELECTOR);
+            if (!btn) return;
+
+            // Lewati intersep kalau ini "replay" klik asli
+            if (btn.dataset.blsBypass) {
+              delete btn.dataset.blsBypass;
+              return;
+            }
+
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
+            blsEmoji.textContent = pickRandom(EMOJIS);
+            blsText.childNodes[0].textContent = pickRandom(MESSAGES);
+            overlay.classList.add("show");
+
+            setTimeout(
+              () => {
+                overlay.classList.remove("show");
+                btn.dataset.blsBypass = "1";
+                btn.click();
+              },
+              550 + Math.random() * 250,
+            );
+          },
+          true,
+        );
+      })();
+    </script>
+
+    <!-- Google Translate (dimuat lazy, hanya saat tombol bahasa dipakai) -->
     <div id="google_translate_element" style="display: none"></div>
     <script>
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement(
-          {
-            pageLanguage: "id",
-            autoDisplay: false,
-          },
-          "google_translate_element",
-        );
+      let gtLoaded = false;
+      let gtLoading = false;
+      let gtPendingLang = null;
+
+      function loadGoogleTranslate(onReady) {
+        if (gtLoaded) {
+          onReady && onReady();
+          return;
+        }
+        if (onReady) gtPendingLang = onReady;
+        if (gtLoading) return;
+        gtLoading = true;
+
+        window.googleTranslateElementInit = function () {
+          new google.translate.TranslateElement(
+            {
+              pageLanguage: "id",
+              autoDisplay: false,
+            },
+            "google_translate_element",
+          );
+          gtLoaded = true;
+          if (gtPendingLang) {
+            gtPendingLang();
+            gtPendingLang = null;
+          }
+        };
+
+        const s = document.createElement("script");
+        s.src =
+          "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+        document.body.appendChild(s);
       }
     </script>
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
       // ===== LANGUAGE DROPDOWN =====
@@ -2588,6 +2651,7 @@
         e.stopPropagation();
         langMenu.classList.toggle("show");
         langBtn.classList.toggle("open");
+        loadGoogleTranslate();
       }
 
       // click untuk desktop, touchend untuk mobile (lebih responsif
@@ -2628,12 +2692,14 @@
         // Ganti frasa typing effect ke bahasa yang dipilih
         setTypingLanguage(lang);
 
-        // Trigger Google Translate
-        const select = document.querySelector(".goog-te-combo");
-        if (select) {
-          select.value = lang === "id" ? "" : lang;
-          select.dispatchEvent(new Event("change"));
-        }
+        // Trigger Google Translate (tunggu script-nya siap kalau belum)
+        loadGoogleTranslate(() => {
+          const select = document.querySelector(".goog-te-combo");
+          if (select) {
+            select.value = lang === "id" ? "" : lang;
+            select.dispatchEvent(new Event("change"));
+          }
+        });
       }
 
       document.querySelectorAll(".lang-option").forEach((btn) => {
@@ -2756,11 +2822,13 @@
         }
 
         const statObserver = new IntersectionObserver(
-          (entries, obs) => {
+          (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
                 animateCount(entry.target);
-                obs.unobserve(entry.target);
+              } else {
+                entry.target.textContent =
+                  "0" + (entry.target.dataset.suffix || "");
               }
             });
           },
@@ -2771,314 +2839,38 @@
       })();
     </script>
 
-    <!-- ===== MUSIK PLAYER JS ===== -->
+    <!-- About V2: Skill bar animate on scroll (berulang tiap masuk viewport) -->
     <script>
-      (() => {
-        const tracks = [
-          {
-            title: "RedRed",
-            artist: "Cortis",
-            src: "audio/redred.mp3",
-            hue: 255,
-            photo: "img/artist/redred.jpg",
+      (function () {
+        var fills = document.querySelectorAll(".about-skill-fill");
+        if (!fills.length) return;
+
+        var skillObserver = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("animated");
+              } else {
+                entry.target.classList.remove("animated");
+              }
+            });
           },
-          {
-            title: "Lemontang",
-            artist: "Hearts2Hearts",
-            src: "audio/lemontang.mp3",
-            hue: 320,
-            photo: "img/artist/lemontang.jpg",
-          },
-          {
-            title: "Rude",
-            artist: "Hearts2Hearts",
-            src: "audio/rude.mp3",
-            hue: 190,
-            photo: "img/artist/rude.jpg",
-          },
-          {
-            title: "Fashion",
-            artist: "Cortis",
-            src: "audio/fashion.mp3",
-            hue: 30,
-            photo: "img/artist/fashion.jpg",
-          },
-          {
-            title: "Go!",
-            artist: "Cortis",
-            src: "audio/go.mp3",
-            hue: 140,
-            photo: "img/artist/go.jpg",
-          },
-          {
-            title: "Impostor Syndrome",
-            artist: "Sidney Gish",
-            src: "audio/impostor.mp3",
-            hue: 60,
-            photo: "img/artist/impostor.jpg",
-          },
-        ];
+          { threshold: 0.3 },
+        );
 
-        let current = 0;
-        let playing = false;
-        let shuffled = false;
-        let repeated = false;
-
-        const audio = new Audio();
-        audio.preload = "metadata";
-        audio.volume = 0.75;
-
-        const vinyl = document.getElementById("playerVinyl");
-        const vinylPhoto = document.getElementById("vinylArtistPhoto");
-        const vinylFallback = document.getElementById("vinylLabelFallback");
-        const needle = document.getElementById("playerNeedle");
-        const nowDot = document.getElementById("nowDot");
-        const nowLabel = document.getElementById("nowLabel");
-        const songName = document.getElementById("playerSongName");
-        const artistEl = document.getElementById("playerArtist");
-        const barFill = document.getElementById("playerBarFill");
-        const barThumb = document.getElementById("playerThumb");
-        const playerBar = document.getElementById("playerBar");
-        const playBtn = document.getElementById("playerPlay");
-        const playIcon = document.getElementById("playerPlayIcon");
-        const prevBtn = document.getElementById("playerPrev");
-        const nextBtn = document.getElementById("playerNext");
-        const shuffleBtn = document.getElementById("playerShuffle");
-        const repeatBtn = document.getElementById("playerRepeat");
-        const curTime = document.getElementById("playerCurrent");
-        const durTime = document.getElementById("playerDuration");
-        const volFill = document.getElementById("volFill");
-        const trackItems = document.querySelectorAll(".track-item");
-        const waveCanvas = document.getElementById("waveCanvas");
-        const waveCtx = waveCanvas ? waveCanvas.getContext("2d") : null;
-
-        if (!vinyl) return;
-
-        // ---- Waveform animation ----
-        let wavePhase = 0;
-        let waveRAF;
-        function drawWave(active) {
-          if (!waveCtx) return;
-          const W = waveCanvas.width,
-            H = waveCanvas.height;
-          waveCtx.clearRect(0, 0, W, H);
-          const bars = 40;
-          const barW = W / bars - 1;
-          const hue = tracks[current].hue;
-          for (let i = 0; i < bars; i++) {
-            const amplitude = active
-              ? (Math.sin(wavePhase + i * 0.4) * 0.5 + 0.5) * (H * 0.85) + 3
-              : H * 0.12;
-            const x = i * (barW + 1);
-            const alpha = active ? 0.55 + (i % 3) * 0.15 : 0.2;
-            waveCtx.fillStyle = `hsla(${hue},80%,65%,${alpha})`;
-            waveCtx.beginPath();
-            waveCtx.roundRect(x, (H - amplitude) / 2, barW, amplitude, 2);
-            waveCtx.fill();
-          }
-          if (active) {
-            wavePhase += 0.09;
-            waveRAF = requestAnimationFrame(() => drawWave(playing));
-          }
-        }
-        function startWave() {
-          cancelAnimationFrame(waveRAF);
-          drawWave(true);
-        }
-        function stopWave() {
-          cancelAnimationFrame(waveRAF);
-          drawWave(false);
-        }
-
-        // ---- Time format ----
-        function fmt(s) {
-          if (!isFinite(s)) return "–:––";
-          const m = Math.floor(s / 60),
-            ss = Math.floor(s % 60);
-          return m + ":" + String(ss).padStart(2, "0");
-        }
-
-        // ---- Progress ----
-        audio.addEventListener("timeupdate", () => {
-          if (!audio.duration) return;
-          const pct = (audio.currentTime / audio.duration) * 100;
-          barFill.style.width = pct + "%";
-          barThumb.style.left = pct + "%";
-          curTime.textContent = fmt(audio.currentTime);
+        fills.forEach(function (el) {
+          skillObserver.observe(el);
         });
-        audio.addEventListener("loadedmetadata", () => {
-          durTime.textContent = fmt(audio.duration);
-        });
-
-        // Seek
-        playerBar &&
-          playerBar.addEventListener("click", (e) => {
-            if (!audio.duration) return;
-            const rect = playerBar.getBoundingClientRect();
-            audio.currentTime =
-              ((e.clientX - rect.left) / rect.width) * audio.duration;
-          });
-
-        // Volume bar
-        document.querySelector(".vol-bar") &&
-          document.querySelector(".vol-bar").addEventListener("click", (e) => {
-            const rect = e.currentTarget.getBoundingClientRect();
-            const v = Math.max(
-              0,
-              Math.min(1, (e.clientX - rect.left) / rect.width),
-            );
-            audio.volume = v;
-            volFill.style.width = v * 100 + "%";
-          });
-
-        // ---- Ended ----
-        audio.addEventListener("ended", () => {
-          if (repeated) {
-            audio.currentTime = 0;
-            audio.play();
-            return;
-          }
-          setTrack(current + 1, true);
-        });
-
-        audio.addEventListener("error", () => {
-          setEqPlaying(current, false);
-          setVisualState(false);
-          playing = false;
-        });
-
-        // ---- EQ bars ----
-        function setEqPlaying(idx, active) {
-          document.querySelectorAll(".track-eq").forEach((eq, i) => {
-            eq.classList.toggle("playing", i === idx && active);
-          });
-        }
-
-        // ---- Visual playing state ----
-        function setVisualState(isPlaying) {
-          vinyl.classList.toggle("spinning", isPlaying);
-          needle && needle.classList.toggle("engaged", isPlaying);
-          nowDot && nowDot.classList.toggle("pulsing", isPlaying);
-          nowLabel &&
-            (nowLabel.textContent = isPlaying ? "Now Playing" : "Paused");
-          playIcon.className = isPlaying
-            ? "bi bi-pause-fill"
-            : "bi bi-play-fill";
-          if (isPlaying) startWave();
-          else stopWave();
-        }
-
-        // ---- Set track ----
-        function setTrack(idx, autoplay) {
-          current = (idx + tracks.length) % tracks.length;
-          const track = tracks[current];
-
-          songName.textContent = track.title;
-          artistEl.textContent = track.artist;
-          barFill.style.width = "0%";
-          barThumb.style.left = "0%";
-          curTime.textContent = "0:00";
-          durTime.textContent = "–:––";
-
-          // Update vinyl hue
-          vinyl.style.setProperty("--vinyl-hue", track.hue);
-
-          // Update artist photo on vinyl
-          if (vinylPhoto && track.photo) {
-            vinylPhoto.style.display = "";
-            if (vinylFallback) vinylFallback.style.display = "none";
-            vinylPhoto.src = track.photo;
-            vinylPhoto.onerror = () => {
-              vinylPhoto.style.display = "none";
-              if (vinylFallback) vinylFallback.style.display = "flex";
-            };
-          }
-
-          trackItems.forEach((t, i) =>
-            t.classList.toggle("active", i === current),
-          );
-          setEqPlaying(current, false);
-
-          audio.src = track.src;
-          audio.load();
-
-          if (autoplay || playing) {
-            audio
-              .play()
-              .then(() => {
-                playing = true;
-                setEqPlaying(current, true);
-                setVisualState(true);
-              })
-              .catch(() => {
-                playing = false;
-                setVisualState(false);
-              });
-          } else {
-            setVisualState(false);
-          }
-        }
-
-        // ---- Controls ----
-        playBtn.addEventListener("click", () => {
-          if (playing) {
-            audio.pause();
-            playing = false;
-            setEqPlaying(current, false);
-            setVisualState(false);
-          } else {
-            if (!audio.src || audio.src === window.location.href) {
-              audio.src = tracks[current].src;
-              audio.load();
-            }
-            audio
-              .play()
-              .then(() => {
-                playing = true;
-                setEqPlaying(current, true);
-                setVisualState(true);
-              })
-              .catch((err) => console.warn("Play error:", err));
-          }
-        });
-
-        prevBtn.addEventListener("click", () => setTrack(current - 1, playing));
-        nextBtn.addEventListener("click", () => {
-          if (shuffled)
-            setTrack(Math.floor(Math.random() * tracks.length), playing);
-          else setTrack(current + 1, playing);
-        });
-
-        shuffleBtn &&
-          shuffleBtn.addEventListener("click", () => {
-            shuffled = !shuffled;
-            shuffleBtn.classList.toggle("active-mode", shuffled);
-          });
-        repeatBtn &&
-          repeatBtn.addEventListener("click", () => {
-            repeated = !repeated;
-            repeatBtn.classList.toggle("active-mode", repeated);
-          });
-
-        trackItems.forEach((item, i) => {
-          item.addEventListener("click", (e) => {
-            if (e.target.closest(".track-spotify")) return;
-            playing = true;
-            setTrack(i, true);
-          });
-        });
-
-        // Init
-        setTrack(0, false);
-        stopWave();
       })();
     </script>
+
     <!-- Timeline v2: spine fill + floating particles -->
     <script>
       (function () {
-        /* ── Spine fill on scroll ── */
+        /* ── Spine fill on scroll (di-throttle pakai rAF) ── */
         const spineFill = document.getElementById("tl2SpineFill");
         const section = document.getElementById("perjalanan");
+        let spineTicking = false;
         if (spineFill && section) {
           function updateSpine() {
             const rect = section.getBoundingClientRect();
@@ -3091,18 +2883,27 @@
               ),
             );
             spineFill.style.height = prog * 100 + "%";
+            spineTicking = false;
           }
-          window.addEventListener("scroll", updateSpine, { passive: true });
+          function onSpineScroll() {
+            if (!spineTicking) {
+              requestAnimationFrame(updateSpine);
+              spineTicking = true;
+            }
+          }
+          window.addEventListener("scroll", onSpineScroll, { passive: true });
           updateSpine();
         }
 
-        /* ── Floating particles canvas ── */
+        /* ── Floating particles canvas (pause saat tidak terlihat, hemat baterai/CPU) ── */
         const canvas = document.getElementById("tl2Canvas");
         if (!canvas) return;
         const ctx = canvas.getContext("2d");
         let W,
           H,
-          particles = [];
+          particles = [],
+          rafId = null,
+          isVisible = false;
 
         function resize() {
           W = canvas.width = canvas.offsetWidth;
@@ -3147,9 +2948,44 @@
             ctx.fill();
           });
           ctx.globalAlpha = 1;
-          requestAnimationFrame(draw);
+          rafId = requestAnimationFrame(draw);
         }
-        draw();
+
+        function startDraw() {
+          if (rafId === null) {
+            rafId = requestAnimationFrame(draw);
+          }
+        }
+
+        function stopDraw() {
+          if (rafId !== null) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+          }
+        }
+
+        const canvasObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              isVisible = entry.isIntersecting;
+              if (isVisible && document.visibilityState === "visible") {
+                startDraw();
+              } else {
+                stopDraw();
+              }
+            });
+          },
+          { threshold: 0 },
+        );
+        canvasObserver.observe(canvas);
+
+        document.addEventListener("visibilitychange", () => {
+          if (document.visibilityState === "visible" && isVisible) {
+            startDraw();
+          } else {
+            stopDraw();
+          }
+        });
       })();
     </script>
   </body>
