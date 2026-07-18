@@ -2,7 +2,10 @@
 <html lang="id">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <title>M. Zikri Al-Bukhori — Front-End Developer & UI Designer</title>
 
     <!-- SEO -->
@@ -115,83 +118,72 @@
       </button>
     </div>
 
-    <!-- ===== INTRO PREMIUM ===== -->
+    <!-- ===== INTRO MODERN (light) ===== -->
     <div
       id="introOverlay"
       role="dialog"
       aria-modal="true"
       aria-label="Intro animasi portfolio"
     >
-      <!-- Canvas untuk partikel mengambang -->
-      <canvas id="introCanvas"></canvas>
+      <!-- Ambient blobs, terang -->
+      <div class="io-blob io-blob-1"></div>
+      <div class="io-blob io-blob-2"></div>
+      <div class="io-blob io-blob-3"></div>
 
-      <!-- Orbs ambient -->
-      <div class="io-orb io-orb-1"></div>
-      <div class="io-orb io-orb-2"></div>
-      <div class="io-orb io-orb-3"></div>
-
-      <!-- Dot grid halus -->
+      <!-- Grid garis halus -->
       <div class="io-grid"></div>
 
-      <!-- Garis dekoratif horizontal -->
-      <div class="io-line io-line-top" id="ioLineTop"></div>
-      <div class="io-line io-line-bot" id="ioLineBot"></div>
+      <!-- Header kecil -->
+      <div class="io-top">
+        <div class="io-mark">
+          <span class="io-mark-box">Z</span>
+          <span class="io-mark-text">zikri.dev</span>
+        </div>
+        <div class="io-counter">
+          <span id="ioPctNum">00</span><span class="io-counter-max">/100</span>
+        </div>
+      </div>
 
       <!-- Konten tengah -->
       <div class="io-stage">
-        <!-- Label atas -->
-        <div class="io-badge" id="ioBadge">
-          <span class="io-badge-dot"></span>
-          <span>Front-End Developer &amp; UI Designer</span>
+        <div class="io-eyebrow" id="ioEyebrow">
+          <span class="io-eyebrow-dot"></span>
+          Selamat datang di portfolio saya
         </div>
 
-        <!-- Nama utama -->
-        <div class="io-hero-name" id="ioHeroName">
-          <div class="io-char-row">
-            <span class="io-char" style="--i: 0">Z</span>
-            <span class="io-char" style="--i: 1">I</span>
-            <span class="io-char" style="--i: 2">K</span>
-            <span class="io-char" style="--i: 3">R</span>
-            <span class="io-char" style="--i: 4">I</span>
-          </div>
-        </div>
-
-        <!-- Tagline -->
-        <div class="io-tagline" id="ioTagline">
-          <span class="io-tline"></span>
-          <span class="io-ttext"
-            >PORTFOLIO &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Medan</span
+        <h1 class="io-title">
+          <span class="io-reveal" id="ioRevealTop"
+            ><span class="io-reveal-in">Front-End Developer</span></span
           >
-          <span class="io-tline"></span>
+          <span class="io-reveal io-reveal-name" id="ioRevealName"
+            ><span class="io-reveal-in">Zikri Al-Bukhori</span></span
+          >
+        </h1>
+
+        <div class="io-role-line" id="ioRoleLine">
+          <span class="io-role-tick">/</span>
+          <span class="io-role-text" id="ioRoleText">UI Designer</span>
+          <span class="io-role-cursor">|</span>
         </div>
-
-        <!-- Deskripsi kecil -->
-        <p class="io-desc" id="ioDesc">
-          Building elegant web experiences from Indonesia.
-        </p>
       </div>
 
-      <!-- Pojok dekoratif -->
-      <div class="io-corner io-corner-tl"><span></span><span></span></div>
-      <div class="io-corner io-corner-tr"><span></span><span></span></div>
-      <div class="io-corner io-corner-bl"><span></span><span></span></div>
-      <div class="io-corner io-corner-br"><span></span><span></span></div>
-
-      <!-- Progress bar -->
-      <div class="io-bar">
-        <div class="io-bar-fill" id="ioBarFill"></div>
-        <div class="io-bar-glow" id="ioBarGlow"></div>
+      <!-- Footer: progress + skip -->
+      <div class="io-bottom">
+        <div class="io-bar">
+          <div class="io-bar-fill" id="ioBarFill"></div>
+        </div>
+        <div class="io-bottom-row">
+          <span class="io-loc">Medan, Indonesia — 2026</span>
+          <button
+            class="io-skip"
+            id="introSkip"
+            type="button"
+            aria-label="Lewati intro"
+          >
+            Lewati <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
       </div>
-
-      <!-- Tombol Skip -->
-      <button
-        class="io-skip"
-        id="introSkip"
-        type="button"
-        aria-label="Lewati intro"
-      >
-        Skip <i class="bi bi-skip-forward-fill"></i>
-      </button>
     </div>
     <!-- /#introOverlay -->
 
@@ -760,6 +752,9 @@
                 <i class="bi bi-shop"></i>
                 <span>Toko Kue</span>
               </div>
+              <span class="proyek-badge-status live">
+                <span class="status-dot"></span>Live
+              </span>
               <div class="proyek-overlay">
                 <a
                   href="https://trynvexa.github.io/toko-kue/"
@@ -839,6 +834,9 @@
                 <i class="bi bi-egg-fried"></i>
                 <span>Ayam Penyet</span>
               </div>
+              <span class="proyek-badge-status live">
+                <span class="status-dot"></span>Live
+              </span>
               <div class="proyek-overlay">
                 <a
                   href="https://web-ayam.vercel.app/"
@@ -918,6 +916,9 @@
                 <i class="bi bi-shield-lock-fill"></i>
                 <span>Halaman Login</span>
               </div>
+              <span class="proyek-badge-status done">
+                <span class="status-dot"></span>Selesai
+              </span>
               <div class="proyek-overlay">
                 <a
                   href="https://trynvexa.github.io/smk-login/"
@@ -971,6 +972,219 @@
                   class="btn-proyek-github"
                 >
                   <i class="bi bi-github"></i> Source
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyek 4: GiGi Energy Drink Landing Page -->
+          <div class="proyek-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="proyek-img-wrap">
+              <!-- Simpan screenshot ke img/proyek/gigi-energy.jpg -->
+              <img
+                src="img/proyek/gigi.png"
+                alt="Screenshot GiGi Energy Drink Landing Page"
+                class="proyek-img-real"
+                loading="lazy"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <div
+                class="proyek-img-placeholder proyek-img-gigi"
+                style="display: none"
+              >
+                <i class="bi bi-lightning-charge-fill"></i>
+                <span>GiGi Energy Drink</span>
+              </div>
+              <span class="proyek-badge-status live">
+                <span class="status-dot"></span>Live
+              </span>
+              <div class="proyek-overlay">
+                <a
+                  href="https://modern-gen-z-energy-drink-landi-six-eta.vercel.app/"
+                  target="_blank"
+                  rel="noopener"
+                  class="proyek-preview-btn"
+                >
+                  <i class="bi bi-eye"></i> Preview
+                </a>
+              </div>
+              <div class="proyek-img-glow"></div>
+            </div>
+            <div class="proyek-body">
+              <div class="proyek-header-row">
+                <h5 class="proyek-title">GiGi Energy Drink</h5>
+                <span class="proyek-year">2026</span>
+              </div>
+              <p class="proyek-desc">
+                Landing page produk minuman energi bergaya Gen Z, menonjolkan
+                varian rasa, keunggulan formula (zero sugar, kafein alami), dan
+                galeri sosial dengan animasi scroll yang enerjik.
+              </p>
+              <div class="proyek-tech-tags">
+                <span class="proyek-tech"
+                  ><i class="bi bi-filetype-jsx"></i> Next.js</span
+                >
+                <span class="proyek-tech"
+                  ><i class="bi bi-wind"></i> Tailwind CSS</span
+                >
+                <span class="proyek-tech"
+                  ><i class="bi bi-stars"></i> Landing Page</span
+                >
+              </div>
+              <div class="proyek-divider"></div>
+              <div class="proyek-actions">
+                <a
+                  href="https://modern-gen-z-energy-drink-landi-six-eta.vercel.app/"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn-proyek-demo btn-proyek-demo--full"
+                >
+                  <i class="bi bi-box-arrow-up-right"></i> Kunjungi Situs
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyek 5: MONO — Sustainable Design Home -->
+          <div class="proyek-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="proyek-img-wrap">
+              <!-- Simpan screenshot ke img/proyek/mono-house.jpg -->
+              <img
+                src="img/proyek/mono.png"
+                alt="Screenshot MONO Sustainable Design Home"
+                class="proyek-img-real"
+                loading="lazy"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <div
+                class="proyek-img-placeholder proyek-img-mono"
+                style="display: none"
+              >
+                <i class="bi bi-house-heart-fill"></i>
+                <span>MONO</span>
+              </div>
+              <span class="proyek-badge-status live">
+                <span class="status-dot"></span>Live
+              </span>
+              <div class="proyek-overlay">
+                <a
+                  href="https://v0-mono-ecommerce.vercel.app/"
+                  target="_blank"
+                  rel="noopener"
+                  class="proyek-preview-btn"
+                >
+                  <i class="bi bi-eye"></i> Preview
+                </a>
+              </div>
+              <div class="proyek-img-glow"></div>
+            </div>
+            <div class="proyek-body">
+              <div class="proyek-header-row">
+                <h5 class="proyek-title">MONO — Sustainable Home</h5>
+                <span class="proyek-year">2026</span>
+              </div>
+              <p class="proyek-desc">
+                Website showcase rumah modular ramah lingkungan dengan galeri
+                arsitektur, spesifikasi energi, dan tiga pilihan model rumah
+                lengkap dengan harga.
+              </p>
+              <div class="proyek-tech-tags">
+                <span class="proyek-tech"
+                  ><i class="bi bi-filetype-jsx"></i> Next.js</span
+                >
+                <span class="proyek-tech"
+                  ><i class="bi bi-wind"></i> Tailwind CSS</span
+                >
+                <span class="proyek-tech"
+                  ><i class="bi bi-bag-heart-fill"></i> E-Commerce</span
+                >
+              </div>
+              <div class="proyek-divider"></div>
+              <div class="proyek-actions">
+                <a
+                  href="https://v0-mono-ecommerce.vercel.app/"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn-proyek-demo btn-proyek-demo--full"
+                >
+                  <i class="bi bi-box-arrow-up-right"></i> Kunjungi Situs
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Proyek 6: COMPUTE — AI Agents Platform -->
+          <div class="proyek-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="proyek-img-wrap">
+              <!-- Simpan screenshot ke img/proyek/compute.jpg -->
+              <img
+                src="img/proyek/ai.png"
+                alt="Screenshot COMPUTE AI Agents Platform"
+                class="proyek-img-real"
+                loading="lazy"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <div
+                class="proyek-img-placeholder proyek-img-compute"
+                style="display: none"
+              >
+                <i class="bi bi-cpu-fill"></i>
+                <span>COMPUTE</span>
+              </div>
+              <span class="proyek-badge-status live">
+                <span class="status-dot"></span>Live
+              </span>
+              <div class="proyek-overlay">
+                <a
+                  href="https://compute-the-platform-to-build-psi-tan.vercel.app/"
+                  target="_blank"
+                  rel="noopener"
+                  class="proyek-preview-btn"
+                >
+                  <i class="bi bi-eye"></i> Preview
+                </a>
+              </div>
+              <div class="proyek-img-glow"></div>
+            </div>
+            <div class="proyek-body">
+              <div class="proyek-header-row">
+                <h5 class="proyek-title">COMPUTE — AI Agents Platform</h5>
+                <span class="proyek-year">2026</span>
+              </div>
+              <p class="proyek-desc">
+                Landing page SaaS untuk platform AI agent otonom di
+                infrastruktur terdistribusi, lengkap dengan section fitur,
+                statistik real-time, integrasi, keamanan, dan pricing
+                bertingkat.
+              </p>
+              <div class="proyek-tech-tags">
+                <span class="proyek-tech"
+                  ><i class="bi bi-filetype-jsx"></i> Next.js</span
+                >
+                <span class="proyek-tech"
+                  ><i class="bi bi-wind"></i> Tailwind CSS</span
+                >
+                <span class="proyek-tech"
+                  ><i class="bi bi-robot"></i> SaaS Landing</span
+                >
+              </div>
+              <div class="proyek-divider"></div>
+              <div class="proyek-actions">
+                <a
+                  href="https://compute-the-platform-to-build-psi-tan.vercel.app/"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn-proyek-demo btn-proyek-demo--full"
+                >
+                  <i class="bi bi-box-arrow-up-right"></i> Kunjungi Situs
                 </a>
               </div>
             </div>
@@ -1810,149 +2024,81 @@
     <script>
       AOS.init({ once: false, mirror: true, offset: 60 });
 
-      // ===== INTRO PREMIUM =====
+      // ===== INTRO MODERN =====
       (function () {
         const overlay = document.getElementById("introOverlay");
         const skipBtn = document.getElementById("introSkip");
         const barFill = document.getElementById("ioBarFill");
-        const pctEl = document.getElementById("ioPct");
-        const badge = document.getElementById("ioBadge");
-        const tagline = document.getElementById("ioTagline");
-        const desc = document.getElementById("ioDesc");
-        const lineTop = document.getElementById("ioLineTop");
-        const lineBot = document.getElementById("ioLineBot");
-        const canvas = document.getElementById("introCanvas");
-        const chars = document.querySelectorAll(".io-char");
+        const pctNum = document.getElementById("ioPctNum");
+        const eyebrow = document.getElementById("ioEyebrow");
+        const revealTop = document.getElementById("ioRevealTop");
+        const revealName = document.getElementById("ioRevealName");
+        const roleLine = document.getElementById("ioRoleLine");
+        const roleText = document.getElementById("ioRoleText");
 
         if (!overlay) return;
 
-        const DURATION = 3400;
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        const DURATION = reduceMotion ? 400 : 2600;
+        const ROLES = ["UI Designer", "Web Developer", "SMK Swasta Mandiri"];
         let done = false;
         let pctRaf = null;
         let startTime = null;
-        let cRaf = null;
+        let roleInterval = null;
+        let roleIdx = 0;
         const timers = [];
 
         document.body.style.overflow = "hidden";
 
-        // ── Atur transition tiap huruf langsung via JS ──
-        chars.forEach(function (el, idx) {
-          el.style.transition =
-            "opacity 0.6s cubic-bezier(0.22,1,0.36,1) " +
-            idx * 90 +
-            "ms, " +
-            "transform 0.6s cubic-bezier(0.22,1,0.36,1) " +
-            idx * 90 +
-            "ms";
-        });
-
-        // ── Canvas partikel ──
-        if (canvas) {
-          var ctx = canvas.getContext("2d");
-          var dots = [];
-          canvas.width = window.innerWidth;
-          canvas.height = window.innerHeight;
-          window.addEventListener("resize", function () {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-          });
-          for (var k = 0; k < 36; k++) {
-            dots.push({
-              x: Math.random() * canvas.width,
-              y: Math.random() * canvas.height,
-              r: Math.random() * 1.6 + 0.5,
-              vx: (Math.random() - 0.5) * 0.3,
-              vy: (Math.random() - 0.5) * 0.3,
-              a: Math.random() * 0.2 + 0.05,
-            });
-          }
-          (function drawCanvas() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            dots.forEach(function (d) {
-              d.x += d.vx;
-              d.y += d.vy;
-              if (d.x < 0 || d.x > canvas.width) d.vx *= -1;
-              if (d.y < 0 || d.y > canvas.height) d.vy *= -1;
-              ctx.beginPath();
-              ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-              ctx.fillStyle = "rgba(99,102,241," + d.a + ")";
-              ctx.fill();
-            });
-            for (var i = 0; i < dots.length; i++) {
-              for (var j = i + 1; j < dots.length; j++) {
-                var dx = dots[i].x - dots[j].x;
-                var dy = dots[i].y - dots[j].y;
-                var dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 115) {
-                  ctx.beginPath();
-                  ctx.strokeStyle =
-                    "rgba(99,102,241," + 0.055 * (1 - dist / 115) + ")";
-                  ctx.lineWidth = 0.7;
-                  ctx.moveTo(dots[i].x, dots[i].y);
-                  ctx.lineTo(dots[j].x, dots[j].y);
-                  ctx.stroke();
-                }
-              }
-            }
-            if (!done) cRaf = requestAnimationFrame(drawCanvas);
-          })();
+        // Ease-out cubic — progress terasa lebih smooth & natural, bukan linear kaku
+        function easeOutCubic(t) {
+          return 1 - Math.pow(1 - t, 3);
         }
 
-        // ── Progress bar via rAF ──
+        // ── Progress bar + counter via rAF ──
         (function animateBar(ts) {
           if (!startTime) startTime = ts;
-          var pct = Math.min((ts - startTime) / DURATION, 1);
+          var raw = Math.min((ts - startTime) / DURATION, 1);
+          var pct = easeOutCubic(raw);
           barFill.style.width = pct * 100 + "%";
-          if (pctEl) pctEl.textContent = Math.floor(pct * 100) + "%";
-          if (pct < 1 && !done) pctRaf = requestAnimationFrame(animateBar);
+          if (pctNum)
+            pctNum.textContent = String(Math.floor(pct * 100)).padStart(2, "0");
+          if (raw < 1 && !done) pctRaf = requestAnimationFrame(animateBar);
         })(performance.now());
 
         // ── Stagger reveal ──
-        // Garis dulu
         timers.push(
           setTimeout(function () {
-            if (lineTop) lineTop.classList.add("io-show");
-            if (lineBot) lineBot.classList.add("io-show");
-          }, 180),
+            if (eyebrow) eyebrow.classList.add("io-show");
+          }, 150),
         );
-
-        // Badge
         timers.push(
           setTimeout(function () {
-            if (badge) badge.classList.add("io-show");
-          }, 480),
+            if (revealTop) revealTop.classList.add("io-show");
+          }, 420),
         );
-
-        // Huruf satu per satu — langsung addClass ke tiap char
-        chars.forEach(function (el, idx) {
-          timers.push(
-            setTimeout(
-              function () {
-                el.classList.add("io-char-show");
-              },
-              820 + idx * 90,
-            ),
-          );
-        });
-
-        // Tagline
         timers.push(
-          setTimeout(
-            function () {
-              if (tagline) tagline.classList.add("io-show");
-            },
-            820 + chars.length * 90 + 200,
-          ),
+          setTimeout(function () {
+            if (revealName) revealName.classList.add("io-show");
+          }, 620),
         );
-
-        // Deskripsi
         timers.push(
-          setTimeout(
-            function () {
-              if (desc) desc.classList.add("io-show");
-            },
-            820 + chars.length * 90 + 500,
-          ),
+          setTimeout(function () {
+            if (roleLine) roleLine.classList.add("io-show");
+            // Ganti kata peran setiap 1.1 detik
+            roleInterval = setInterval(function () {
+              roleIdx = (roleIdx + 1) % ROLES.length;
+              if (roleText) {
+                roleText.style.opacity = "0";
+                setTimeout(function () {
+                  roleText.textContent = ROLES[roleIdx];
+                  roleText.style.opacity = "1";
+                }, 180);
+              }
+            }, 1100);
+          }, 950),
         );
 
         // ── Exit ──
@@ -1961,17 +2107,18 @@
           done = true;
           timers.forEach(clearTimeout);
           cancelAnimationFrame(pctRaf);
-          cancelAnimationFrame(cRaf);
+          if (roleInterval) clearInterval(roleInterval);
           overlay.classList.add("io-out");
           document.body.style.overflow = "";
           setTimeout(function () {
             if (overlay && overlay.parentNode)
               overlay.parentNode.removeChild(overlay);
-          }, 900);
+          }, 750);
         }
 
+        if (roleText) roleText.style.transition = "opacity 0.18s ease";
         skipBtn.addEventListener("click", exitIntro);
-        timers.push(setTimeout(exitIntro, DURATION + 400));
+        timers.push(setTimeout(exitIntro, DURATION + 500));
       })();
 
       // ===== PARTICLE CANVAS =====
@@ -2860,6 +3007,23 @@
 
         fills.forEach(function (el) {
           skillObserver.observe(el);
+        });
+      })();
+    </script>
+
+    <!-- Proyek: klik kartu langsung buka website -->
+    <script>
+      (function () {
+        const cards = document.querySelectorAll("#proyekGrid .proyek-card");
+        cards.forEach((card) => {
+          const demoLink = card.querySelector(".btn-proyek-demo");
+          if (!demoLink) return;
+          card.style.cursor = "pointer";
+          card.addEventListener("click", (e) => {
+            // Kalau yang diklik memang sebuah link (Source/Preview/Demo), biarkan link itu yang jalan
+            if (e.target.closest("a")) return;
+            window.open(demoLink.href, "_blank", "noopener");
+          });
         });
       })();
     </script>
