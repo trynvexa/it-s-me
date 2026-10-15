@@ -46,10 +46,10 @@
       </div>
     </div>
 
-    <div v-if="toast" class="fixed bottom-6 left-1/2 z-[100] flex -translate-x-1/2 items-center gap-2.5 rounded-2xl border-[3px] border-ink bg-white px-5 py-3 text-sm font-extrabold shadow-[5px_5px_0_#141414]" role="status">
-      <span class="flex h-7 w-7 items-center justify-center rounded-full bg-lime text-ink">✓</span>
-      Pesan siap, lanjut di WhatsApp!
-      <button type="button" aria-label="Tutup" @click="toast = false"><X :size="15" stroke-width="3" /></button>
+    <div v-if="toast" class="fixed bottom-6 left-1/2 z-[100] flex w-max max-w-[92vw] -translate-x-1/2 items-center gap-2.5 rounded-2xl border-[3px] border-ink bg-surface px-5 py-3 text-sm leading-snug font-extrabold shadow-[5px_5px_0_#141414]" role="status">
+      <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-lime text-ink">✓</span>
+      <span class="min-w-0">Pesan siap, lanjut di WhatsApp!</span>
+      <button type="button" class="shrink-0" aria-label="Tutup" @click="toast = false"><X :size="15" stroke-width="3" /></button>
     </div>
   </section>
 </template>

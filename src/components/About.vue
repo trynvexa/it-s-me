@@ -35,7 +35,7 @@
               <span class="lanyard-clip" aria-hidden="true"></span>
               <div class="hang-card sticker group relative -rotate-2 cursor-grab overflow-hidden !rounded-[20px] p-2.5 shine active:cursor-grabbing">
                 <div class="overflow-hidden rounded-[14px]">
-                  <img src="/img/zikri-ganteng.jpg" alt="Foto Zikri" class="ed-img aspect-[4/5] w-full object-cover object-top" loading="lazy" decoding="async" draggable="false" />
+                  <img :src="asset('/img/zikri-ganteng.jpg')" alt="Foto Zikri" class="ed-img aspect-[4/5] w-full object-cover object-top" loading="lazy" decoding="async" draggable="false" />
                 </div>
                 <p class="flex items-center justify-between px-1.5 pt-2 pb-1 text-[12px] font-extrabold">
                   <span>ZIKRI • RPL</span><span>ID-2024</span>
@@ -46,7 +46,7 @@
             <Starburst :size="56" class="floaty absolute top-6 -right-6" :rotate="15" style="--fl-rot: 15deg" />
           </div>
 
-          <div class="reveal ticket mx-auto mt-6 max-w-xs !rounded-2xl bg-white px-6 py-3.5 text-center" data-reveal="up" data-delay="120">
+          <div class="reveal ticket mx-auto mt-6 max-w-xs !rounded-2xl bg-surface px-6 py-3.5 text-center" data-reveal="up" data-delay="120">
             <p class="text-[10px] font-extrabold tracking-[0.2em] uppercase opacity-50">Sedang fokus</p>
             <p class="mt-1 text-[14px] font-extrabold">Vue 3 • GSAP • Lenis <span class="ml-1 inline-block h-2 w-2 animate-pulse rounded-full bg-emerald-500"></span></p>
             <p class="mt-1 text-[11px] font-bold tabular-nums opacity-50">{{ now }} WIB — Medan</p>
@@ -60,13 +60,13 @@
 
         <div class="lg:col-span-8">
           <div class="grid gap-5 sm:grid-cols-3">
-            <div class="reveal ticket sticker-hover bg-white p-5 pt-7 text-center" data-reveal="up">
+            <div class="reveal ticket sticker-hover bg-surface p-5 pt-7 text-center" data-reveal="up">
               <span class="mx-auto -mt-11 mb-2 flex h-11 w-11 items-center justify-center rounded-2xl border-[2.5px] border-ink bg-lime shadow-[3px_3px_0_#141414]"><Rocket :size="19" stroke-width="2.5" /></span>
               <p class="font-display text-4xl"><span data-count="6">0</span>+</p>
               <p class="mt-1 text-[11px] font-extrabold tracking-[0.18em] uppercase opacity-50">Proyek live</p>
             </div>
             <div class="reveal ticket sticker-hover bg-grape p-5 pt-7 text-center !text-white" data-reveal="up" data-delay="90" style="box-shadow: 7px 7px 0 #141414">
-              <span class="mx-auto -mt-11 mb-2 flex h-11 w-11 items-center justify-center rounded-2xl border-[2.5px] border-ink bg-white text-ink shadow-[3px_3px_0_#141414]"><Cpu :size="19" stroke-width="2.5" /></span>
+              <span class="mx-auto -mt-11 mb-2 flex h-11 w-11 items-center justify-center rounded-2xl border-[2.5px] border-ink bg-surface text-ink shadow-[3px_3px_0_#141414]"><Cpu :size="19" stroke-width="2.5" /></span>
               <p class="font-display text-4xl"><span data-count="8">0</span></p>
               <p class="mt-1 text-[11px] font-extrabold tracking-[0.18em] uppercase opacity-70">Teknologi</p>
             </div>
@@ -105,13 +105,13 @@
 
             <div class="reveal sticker relative rotate-[0.8deg] p-5 pt-6" data-reveal="scale" data-delay="140" data-tilt>
               <span class="tape" aria-hidden="true"></span>
-              <span class="flex h-11 w-11 items-center justify-center rounded-2xl border-[2.5px] border-ink bg-white shadow-[3px_3px_0_#141414]"><Languages :size="20" stroke-width="2.5" /></span>
+              <span class="flex h-11 w-11 items-center justify-center rounded-2xl border-[2.5px] border-ink bg-surface shadow-[3px_3px_0_#141414]"><Languages :size="20" stroke-width="2.5" /></span>
               <p class="font-display mt-3 text-xl">Language</p>
               <ul class="mt-2.5 space-y-2.5 text-[14px] font-bold" data-stagger>
                 <li v-for="l in langs" :key="l.name" class="lvl flex items-center justify-between gap-3">
                   {{ l.name }}
                   <span class="flex gap-1">
-                    <span v-for="d in 5" :key="d" class="dot h-2.5 w-2.5 rounded-full border-2 border-ink" :class="d <= l.level ? 'bg-lime' : 'bg-white'"></span>
+                    <span v-for="d in 5" :key="d" class="dot h-2.5 w-2.5 rounded-full border-2 border-ink" :class="d <= l.level ? 'bg-lime' : 'bg-surface'"></span>
                   </span>
                 </li>
               </ul>
@@ -139,7 +139,7 @@
             </div>
             <div class="flex shrink-0 gap-2.5">
               <a href="#contact" data-magnetic class="btn-ink !px-5 !py-2.5 !text-[13px]">Hubungi!</a>
-              <a href="/cv/CV-Zikri-Al-Bukhori.pdf" download class="btn-line !border-ink !px-5 !py-2.5 !text-[13px]">CV</a>
+              <a :href="asset('/cv/CV-Zikri-Al-Bukhori.pdf')" download class="btn-line !border-ink !px-5 !py-2.5 !text-[13px]">CV</a>
             </div>
           </div>
         </div>
@@ -157,6 +157,7 @@ import GithubIcon from './brands/GithubIcon.vue'
 import InstagramIcon from './brands/InstagramIcon.vue'
 import TiktokIcon from './brands/TiktokIcon.vue'
 import WhatsappIcon from './brands/WhatsappIcon.vue'
+import { asset } from '../utils/asset'
 
 const contacts = [
   { label: 'WhatsApp', value: '+62 813-6738-1826', href: 'https://wa.me/6281367381826', icon: WhatsappIcon },

@@ -14,7 +14,7 @@
           Zikri<span class="text-lime-deep">.</span>
         </span>
       </RouterLink>
-      <button class="rounded-xl border-[2.5px] border-ink bg-white p-2 shadow-[3px_3px_0_#141414] transition active:translate-x-[2px] active:translate-y-[2px] active:shadow-none md:hidden" type="button" @click="open = !open" :aria-label="open ? 'Tutup menu' : 'Buka menu'">
+      <button class="rounded-xl border-[2.5px] border-ink bg-surface p-2 shadow-[3px_3px_0_#141414] transition active:translate-x-[2px] active:translate-y-[2px] active:shadow-none md:hidden" type="button" @click="open = !open" :aria-label="open ? 'Tutup menu' : 'Buka menu'">
         <Menu v-if="!open" :size="18" />
         <X v-else :size="18" />
       </button>
@@ -44,7 +44,7 @@
           <X :size="18" />
         </button>
       </div>
-      <nav class="ed-container flex flex-1 flex-col justify-center gap-3">
+      <nav class="ed-container flex flex-1 flex-col justify-center gap-3 overflow-y-auto py-6">
         <RouterLink
           v-for="(l, i) in links"
           :key="l.hash"
@@ -65,7 +65,7 @@
           Hubungi saya!
         </RouterLink>
         <div class="mnav-item mt-5 flex justify-center gap-2.5" :style="{ '--i': links.length + 1 }">
-          <a v-for="s in socials" :key="s.label" :href="s.href" target="_blank" rel="noopener" :title="s.label" class="flex h-11 w-11 items-center justify-center rounded-full border-[2.5px] border-ink bg-white shadow-[3px_3px_0_#141414] transition-transform hover:-translate-y-1 hover:rotate-6">
+          <a v-for="s in socials" :key="s.label" :href="s.href" target="_blank" rel="noopener" :title="s.label" class="flex h-11 w-11 items-center justify-center rounded-full border-[2.5px] border-ink bg-surface shadow-[3px_3px_0_#141414] transition-transform hover:-translate-y-1 hover:rotate-6">
             <component :is="s.icon" :size="16" />
           </a>
         </div>

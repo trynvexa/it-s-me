@@ -15,7 +15,7 @@
           <p class="font-display text-xl">Zikri<span class="text-lime-deep">.</span></p>
           <p class="mt-2 text-[13px] leading-relaxed font-semibold text-muted">Front-End Developer & UI Designer — SMK Swasta Mandiri, Medan. Bikin web ceria sejak 2024.</p>
           <div class="mt-4 flex gap-2">
-            <a v-for="s in socials" :key="s.label" :href="s.href" target="_blank" rel="noopener" :title="s.label" class="flex h-10 w-10 items-center justify-center rounded-full border-[2.5px] border-ink bg-white shadow-[3px_3px_0_#141414] transition-all hover:-translate-y-1 hover:rotate-6 hover:bg-ink hover:text-lime">
+            <a v-for="s in socials" :key="s.label" :href="s.href" target="_blank" rel="noopener" :title="s.label" class="flex h-10 w-10 items-center justify-center rounded-full border-[2.5px] border-ink bg-surface shadow-[3px_3px_0_#141414] transition-all hover:-translate-y-1 hover:rotate-6 hover:bg-ink hover:text-lime">
               <component :is="s.icon" :size="15" />
             </a>
           </div>

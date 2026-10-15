@@ -52,7 +52,7 @@
     </svg>
     <span
       ref="bubbleRef"
-      class="absolute -top-3 -right-7 rotate-6 rounded-full border-2 border-ink bg-white px-2 py-0.5 text-[10px] font-black whitespace-nowrap shadow-[2px_2px_0_#141414]"
+      class="absolute -top-3 -right-7 rotate-6 rounded-full border-2 border-ink bg-surface px-2 py-0.5 text-[10px] font-black whitespace-nowrap shadow-[2px_2px_0_#141414]"
       aria-hidden="true"
     >MEOW!</span>
   </span>

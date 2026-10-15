@@ -27,8 +27,8 @@
             <span class="inline-flex items-center gap-1.5 rounded-full border-2 border-emerald-600 bg-emerald-50 px-2.5 py-1 text-[11px] font-extrabold text-emerald-700"><span class="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500"></span>{{ projects[0].status }} • {{ projects[0].year }}</span>
           </div>
           <div class="mt-6 flex flex-wrap gap-2.5">
-            <a :href="projects[0].demo" target="_blank" rel="noopener" class="btn-lime !px-6" @click.stop>Kunjungi!</a>
-            <RouterLink :to="`/proyek/${projects[0].slug}`" class="btn-line !px-6">Studi kasus →</RouterLink>
+            <a :href="projects[0].demo" target="_blank" rel="noopener" class="btn-lime flex-1 !px-6 text-center" @click.stop>Kunjungi!</a>
+            <RouterLink :to="`/proyek/${projects[0].slug}`" class="btn-line flex-1 !px-6 text-center">Studi kasus →</RouterLink>
           </div>
         </div>
       </article>
@@ -46,7 +46,7 @@
             <div class="relative overflow-hidden border-b-[3px] border-ink bg-cream" data-parallax-img>
               <img :src="p.img" :alt="'Screenshot ' + p.title" class="ed-img aspect-[16/10] w-full object-cover" loading="lazy" decoding="async" @error="onImgError" />
               <span class="absolute inset-0 flex items-center justify-center bg-ink/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <span class="rounded-full border-[2.5px] border-ink bg-white px-4 py-2 text-[13px] font-extrabold">Lihat studi kasus →</span>
+                <span class="rounded-full border-[2.5px] border-ink bg-surface px-4 py-2 text-[13px] font-extrabold">Lihat studi kasus →</span>
               </span>
               <span class="badge-lime absolute top-3 left-3 !text-[10px]">{{ p.year }}</span>
               <span class="absolute top-3 right-3 flex h-10 w-10 items-center justify-center rounded-full border-[2.5px] border-ink bg-lime shadow-[3px_3px_0_#141414] transition-transform duration-300 group-hover:rotate-45"><ArrowUpRight :size="17" stroke-width="3" /></span>
@@ -70,7 +70,7 @@
 
       <RouterLink
         to="/#contact"
-        class="reveal mt-7 flex flex-col items-center gap-2 rounded-[26px] border-[3px] border-dashed border-ink/40 bg-white/60 px-6 py-8 text-center transition-all hover:-translate-y-1 hover:border-ink hover:bg-lime-soft hover:shadow-[7px_7px_0_#141414]"
+        class="reveal mt-7 flex flex-col items-center gap-2 rounded-[26px] border-[3px] border-dashed border-ink/40 bg-surface/60 px-6 py-8 text-center transition-all hover:-translate-y-1 hover:border-ink hover:bg-lime-soft hover:shadow-[7px_7px_0_#141414]"
         data-reveal="up"
       >
         <p class="font-display text-2xl md:text-3xl">Mau lihat yang lain? 👀</p>

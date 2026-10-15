@@ -6,6 +6,7 @@
   --font-sans: "Inter", system-ui, sans-serif;
   --color-paper: #f5f1e8;
   --color-cream: #efe8d8;
+  --color-surface: #fffdf6;
   --color-ink: #141414;
   --color-muted: #6f6a5e;
   --color-line: #e2d9c4;
@@ -35,6 +36,12 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 ::selection {
@@ -58,6 +65,9 @@ body {
   background: var(--color-ink);
   border-radius: 99px;
   border: 3px solid var(--color-paper);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-grape);
 }
 
 /* ---------- layout ---------- */
@@ -103,7 +113,7 @@ body {
 
 /* ---------- sticker system ---------- */
 .sticker {
-  background: #fff;
+  background: var(--color-surface);
   border: 3px solid var(--color-ink);
   border-radius: 22px;
   box-shadow: 7px 7px 0 var(--color-ink);
@@ -127,12 +137,13 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   box-shadow: 3px 3px 0 var(--color-ink);
+  white-space: nowrap;
 }
 
 .chip-pop {
   display: inline-flex;
   align-items: center;
-  background: #fff;
+  background: var(--color-surface);
   border: 2px solid var(--color-ink);
   border-radius: 999px;
   padding: 0.3rem 0.8rem;
@@ -140,9 +151,33 @@ body {
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  white-space: nowrap;
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s, box-shadow 0.2s;
+}
+a.chip-pop:hover,
+button.chip-pop:hover,
+.chip-pop[data-confetti]:hover {
+  transform: translateY(-2px);
+  background: var(--color-lime);
+  box-shadow: 2px 2px 0 var(--color-ink);
 }
 
 /* ---------- buttons ---------- */
+.btn-ink,
+.btn-lime,
+.btn-line {
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.btn-ink:disabled,
+.btn-lime:disabled,
+.btn-line:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
 .btn-ink {
   display: inline-flex;
   align-items: center;
@@ -196,7 +231,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: #fff;
+  background: var(--color-surface);
   color: var(--color-ink);
   font-weight: 800;
   font-size: 0.9rem;
@@ -254,7 +289,7 @@ body {
 
 /* ---------- legacy aliases kept for safety ---------- */
 .frame {
-  background: #fff;
+  background: var(--color-surface);
   border: 3px solid var(--color-ink);
   border-radius: 22px;
   box-shadow: 7px 7px 0 var(--color-ink);
@@ -316,6 +351,8 @@ body {
 /* ---------- marquee ---------- */
 .marquee {
   overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 4%, black 96%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 4%, black 96%, transparent);
 }
 .marquee-track {
   display: flex;
@@ -404,8 +441,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   gap: 0.9rem;
+  padding: 0.75rem 0 3.5rem;
   background-color: var(--color-paper);
   background-image: radial-gradient(
     ellipse 70% 45% at 50% 0%,
@@ -417,8 +457,9 @@ body {
   overflow: hidden;
   width: 100%;
   text-align: center;
-  font-size: clamp(2.8rem, 11vw, 6.5rem);
+  font-size: clamp(2.4rem, 12vw, 6.5rem);
   line-height: 1.05;
+  padding-inline: 0.5rem;
   padding-bottom: 0.1em;
   color: #201913;
 }
@@ -428,6 +469,17 @@ body {
 }
 .intro-inner {
   will-change: transform;
+  margin: auto 0;
+  padding-inline: 1rem;
+}
+/* Layar HP pendek/landscape: foto + judul mengecil biar muat */
+@media (max-height: 700px) {
+  .intro-photo-wrap img {
+    height: 170px !important;
+  }
+  .intro-name {
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
 }
 .intro-rule {
   display: block;
@@ -443,6 +495,83 @@ body {
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--color-muted);
+}
+/* poles orisinal: wrapper foto + loader mini */
+.intro-photo-wrap {
+  width: fit-content;
+  will-change: transform;
+}
+.intro-hi {
+  transform: rotate(6deg);
+  white-space: nowrap;
+}
+/* lucu: pipi merona di foto */
+.intro-blush {
+  position: absolute;
+  top: 44%;
+  width: 26px;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(255, 138, 179, 0.75);
+  filter: blur(1px);
+  pointer-events: none;
+}
+.intro-blush-l {
+  left: 18%;
+}
+.intro-blush-r {
+  right: 18%;
+}
+/* lucu: huruf bisa digoyang */
+.intro-ch {
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.intro-ch:hover {
+  translate: 0 -8px;
+}
+.intro-tip-mini {
+  margin-top: 0.3rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.intro-load-mini {
+  min-height: 22px;
+}
+.intro-bar-mini {
+  width: min(210px, 56vw);
+  height: 14px;
+}
+.intro-pct-mini {
+  font-size: 0.72rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-muted);
+  min-width: 2.6rem;
+  text-align: left;
+}
+.intro-skip-mini {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  translate: -50% 0;
+  z-index: 101;
+  background: none;
+  border: none;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.intro-skip-mini:hover {
+  color: var(--color-ink);
 }
 
 /* ---------- gallery viewer ---------- */
@@ -630,6 +759,171 @@ body {
   background: repeating-linear-gradient(-48deg, #c9f24b 0 10px, #a8d92e 10px 20px);
 }
 
+/* ---------- slide manifesto horizontal (ditumpuk vertikal tanpa JS) ---------- */
+.hscroll {
+  position: relative;
+}
+.hscroll-viewport {
+  overflow: hidden;
+}
+.hscroll-track {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+.hscroll-slide {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 88svh;
+  overflow: hidden;
+}
+.hscroll-ready .hscroll-viewport {
+  height: 100svh;
+}
+.hscroll-ready .hscroll-track {
+  flex-direction: row;
+  width: max-content;
+  height: 100%;
+}
+.hscroll-ready .hscroll-slide {
+  width: 100vw;
+  height: 100svh;
+  min-height: 0;
+  flex-shrink: 0;
+}
+.hscroll-word {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.09em;
+  font-size: clamp(3.2rem, 15vw, 12rem);
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow: 5px 5px 0 rgba(20, 20, 20, 0.14);
+  cursor: pointer;
+}
+.hscroll-char {
+  display: inline-block;
+  will-change: transform;
+}
+.hscroll-num {
+  position: absolute;
+  right: 1rem;
+  bottom: 3rem;
+  font-size: clamp(4rem, 12vw, 9rem);
+  line-height: 1;
+  color: transparent;
+  user-select: none;
+}
+.hscroll-strip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 3px solid var(--color-ink);
+}
+.hscroll-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  z-index: 20;
+  background: rgba(20, 20, 20, 0.15);
+}
+.hscroll-progress > span {
+  display: block;
+  height: 100%;
+  background: var(--color-ink);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.hscroll-count {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 20;
+  pointer-events: none;
+}
+.hscroll-dots {
+  position: absolute;
+  bottom: 3.6rem;
+  left: 50%;
+  translate: -50% 0;
+  z-index: 10;
+  display: none;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+.hscroll-ready .hscroll-dots {
+  display: flex;
+}
+.hscroll-dot {
+  height: 0.7rem;
+  width: 0.7rem;
+  border-radius: 99px;
+  border: 2.5px solid var(--color-ink);
+  background: rgba(255, 253, 246, 0.65);
+  transition: width 0.3s, background-color 0.3s;
+}
+.hscroll-dot.is-on {
+  width: 2rem;
+  background: var(--color-ink);
+}
+/* dekorasi slide: grain film, sorot konser, halo pink */
+.hscroll-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+}
+.hscroll-beam {
+  position: absolute;
+  top: -12%;
+  height: 124%;
+  width: 24vmin;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.30), transparent 70%);
+  filter: blur(8px);
+}
+.hscroll-beam-l {
+  left: 16%;
+  transform: rotate(13deg);
+}
+.hscroll-beam-r {
+  right: 16%;
+  transform: rotate(-13deg);
+}
+.hscroll-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 82vmin;
+  aspect-ratio: 1;
+  border-radius: 99px;
+  background: radial-gradient(circle, rgba(255, 138, 179, 0.45), transparent 65%);
+  pointer-events: none;
+}
+/* kata beterbangan dari kartu Yuha */
+.hscroll-poke {
+  position: absolute;
+  translate: -50% -50%;
+  z-index: 30;
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--color-ink);
+  background: var(--color-paper);
+  border: 2.5px solid var(--color-ink);
+  border-radius: 999px;
+  padding: 0.15rem 0.7rem;
+  box-shadow: 3px 3px 0 var(--color-ink);
+  will-change: transform, opacity;
+}
+
 /* ---------- highlight marker ---------- */
 .hl {
   background: var(--color-lime);
@@ -699,7 +993,7 @@ body {
 /* ---------- sticker inputs ---------- */
 .field {
   width: 100%;
-  background: #fffdf6;
+  background: var(--color-surface);
   border: 2.5px solid var(--color-ink);
   border-radius: 14px;
   padding: 0.8rem 1rem;
@@ -708,6 +1002,7 @@ body {
   outline: none;
   transition: box-shadow 0.2s, transform 0.2s;
   color: var(--color-ink);
+  caret-color: var(--color-grape);
 }
 .field:focus {
   box-shadow: 4px 4px 0 var(--color-lime-deep);
@@ -716,6 +1011,14 @@ body {
 .field::placeholder {
   color: #a39d8d;
   font-weight: 500;
+}
+/* Matikan kuning autofill Chrome */
+.field:-webkit-autofill,
+.field:-webkit-autofill:hover,
+.field:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--color-ink);
+  -webkit-box-shadow: 0 0 0 100px var(--color-surface) inset;
+  transition: background-color 9999s ease-in-out 0s;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -733,8 +1036,22 @@ body {
   }
   .btn-ink:hover,
   .btn-line:hover,
-  .btn-lime:hover {
+  .btn-lime:hover,
+  .sticker-hover:hover,
+  .chip-pop:hover,
+  .zoom:hover .ed-img,
+  .intro-ch:hover {
     transform: none;
+    translate: none;
+  }
+  .sticker,
+  .btn-ink,
+  .btn-line,
+  .btn-lime,
+  .chip-pop,
+  .ed-img,
+  .field {
+    transition: none;
   }
 }
 

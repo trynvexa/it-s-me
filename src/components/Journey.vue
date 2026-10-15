@@ -18,7 +18,7 @@
           data-reveal="up"
         >
           <span class="absolute top-1 left-0 flex h-14 w-14 items-center justify-center rounded-2xl border-[3px] border-ink font-display text-[13px] shadow-[4px_4px_0_#141414] md:left-auto"
-            :class="[i % 2 === 0 ? 'md:-right-7' : 'md:-left-7', i % 3 === 0 ? 'bg-lime' : i % 3 === 1 ? 'bg-grape text-white' : 'bg-white']"
+            :class="[i % 2 === 0 ? 'md:-right-7' : 'md:-left-7', i % 3 === 0 ? 'bg-lime' : i % 3 === 1 ? 'bg-grape text-white' : 'bg-surface']"
           >
             <span v-if="i === 0" class="absolute inset-0 -z-10 animate-ping rounded-2xl bg-lime" aria-hidden="true"></span>
             {{ j.year.slice(2) }}

@@ -1,3 +1,5 @@
+import { asset } from '../utils/asset'
+
 export interface Project {
   slug: string
   title: string
@@ -22,7 +24,7 @@ export const projects: Project[] = [
     desc: 'Website toko kue online yang menampilkan katalog produk, menu kue lengkap dengan harga, dan informasi kontak pemesanan. Desain manis dan responsif untuk semua perangkat.',
     longDesc:
       'Katalog produk dengan filter kategori, halaman detail tiap kue, keranjang sederhana via WhatsApp checkout, dan section testimoni. Dibangun mobile-first dengan skor Lighthouse 95+.',
-    img: '/img/proyek/kue.jpg',
+    img: asset('/img/proyek/kue.jpg'),
     fallbackIcon: 'shop',
     fallbackLabel: 'Toko Kue',
     status: 'Live',
@@ -38,7 +40,7 @@ export const projects: Project[] = [
     desc: 'Website restoran Ayam Penyet dengan tampilan menggugah selera, menampilkan menu, harga, jam operasional, dan lokasi. Didesain modern dengan nuansa hangat khas kuliner Indonesia.',
     longDesc:
       'Menu interaktif dengan foto, jam operasional otomatis (buka/tutup), embed peta lokasi, dan tombol pesan cepat. Palet hangat khas kuliner Indonesia.',
-    img: '/img/proyek/ayam.jpg',
+    img: asset('/img/proyek/ayam.jpg'),
     fallbackIcon: 'egg',
     fallbackLabel: 'Ayam Penyet',
     status: 'Live',
@@ -54,7 +56,7 @@ export const projects: Project[] = [
     desc: 'Desain halaman login modern dan elegan dengan animasi smooth, validasi form, dan tampilan yang bersih. Mendukung mode show/hide password dan responsif di semua ukuran layar.',
     longDesc:
       'Form login dengan validasi real-time, toggle show/hide password, state loading/error yang jelas, dan animasi micro-interaction. Fondasi reusable untuk halaman auth.',
-    img: '/img/proyek/login.jpg',
+    img: asset('/img/proyek/login.jpg'),
     fallbackIcon: 'lock',
     fallbackLabel: 'Halaman Login',
     status: 'Selesai',
@@ -70,7 +72,7 @@ export const projects: Project[] = [
     desc: 'Landing page produk minuman energi bergaya Gen Z, menonjolkan varian rasa, keunggulan formula (zero sugar, kafein alami), dan galeri sosial dengan animasi scroll yang enerjik.',
     longDesc:
       'Landing page Gen Z dengan hero statement, perbandingan varian rasa, breakdown formula, galeri UGC, dan animasi scroll-triggered yang menjaga LCP tetap hijau.',
-    img: '/img/proyek/gigi.webp',
+    img: asset('/img/proyek/gigi.webp'),
     fallbackIcon: 'zap',
     fallbackLabel: 'GiGi Energy Drink',
     status: 'Live',
@@ -85,7 +87,7 @@ export const projects: Project[] = [
     desc: 'Website showcase rumah modular ramah lingkungan dengan galeri arsitektur, spesifikasi energi, dan tiga pilihan model rumah lengkap dengan harga.',
     longDesc:
       'Showcase arsitektur modular dengan galeri foto, spesifikasi energi (panel surya, insulasi), dan comparison 3 model rumah beserta harga transparan.',
-    img: '/img/proyek/mono.webp',
+    img: asset('/img/proyek/mono.webp'),
     fallbackIcon: 'home',
     fallbackLabel: 'MONO',
     status: 'Live',
@@ -100,7 +102,7 @@ export const projects: Project[] = [
     desc: 'Landing page SaaS untuk platform AI agent otonom di infrastruktur terdistribusi, lengkap dengan section fitur, statistik real-time, integrasi, keamanan, dan pricing bertingkat.',
     longDesc:
       'SaaS landing lengkap: hero dengan live stats, grid fitur, logo integrasi, section keamanan/komplians, pricing 3 tier, FAQ, dan CTA trial. Struktur section reusable untuk produk SaaS lain.',
-    img: '/img/proyek/ai.webp',
+    img: asset('/img/proyek/ai.webp'),
     fallbackIcon: 'cpu',
     fallbackLabel: 'COMPUTE',
     status: 'Live',
@@ -128,7 +130,7 @@ export const achievements: Achievement[] = [
     title: 'Juara 1 MLBB',
     chip: '🏆 Champion',
     year: '2024',
-    img: '/img/project/sertifikat1.jpg',
+    img: asset('/img/project/sertifikat1.jpg'),
     tag: 'Anomali Store Season 1',
     text: 'Meraih juara 1 turnamen Mobile Legends Anomali Store Season 1 bersama tim lewat strategi dan kerja sama solid.',
   },
@@ -136,7 +138,7 @@ export const achievements: Achievement[] = [
     title: 'Tournament Player',
     chip: '🎮 Player',
     year: '2024',
-    img: '/img/project/sertifikat2.jpg',
+    img: asset('/img/project/sertifikat2.jpg'),
     tag: 'Competitive Player',
     text: 'Berpartisipasi aktif di berbagai turnamen kompetitif, mengasah mental bertanding dan komunikasi tim.',
   },
@@ -144,7 +146,7 @@ export const achievements: Achievement[] = [
     title: 'Esports Experience',
     chip: '🔥 Esports',
     year: '2024',
-    img: '/img/project/sertifikat3.jpg',
+    img: asset('/img/project/sertifikat3.jpg'),
     tag: 'MLBB Journey',
     text: 'Pengalaman panjang di skena esports MLBB yang membentuk disiplin, kepemimpinan, dan sportivitas.',
   },
@@ -227,12 +229,12 @@ export const journey: JourneyItem[] = [
 ]
 
 export const galleryImages = [
-  { src: '/img/Gallery/thumbnail/1.webp', caption: 'Momen 1' },
-  { src: '/img/Gallery/thumbnail/2.webp', caption: 'Momen 2' },
-  { src: '/img/Gallery/thumbnail/3.webp', caption: 'Momen 3' },
-  { src: '/img/Gallery/thumbnail/4.webp', caption: 'Momen 4' },
-  { src: '/img/Gallery/thumbnail/5.webp', caption: 'Momen 5' },
-  { src: '/img/Gallery/thumbnail/6.webp', caption: 'Momen 6' },
+  { src: asset('/img/Gallery/thumbnail/1.webp'), caption: 'Momen 1' },
+  { src: asset('/img/Gallery/thumbnail/2.webp'), caption: 'Momen 2' },
+  { src: asset('/img/Gallery/thumbnail/3.webp'), caption: 'Momen 3' },
+  { src: asset('/img/Gallery/thumbnail/4.webp'), caption: 'Momen 4' },
+  { src: asset('/img/Gallery/thumbnail/5.webp'), caption: 'Momen 5' },
+  { src: asset('/img/Gallery/thumbnail/6.webp'), caption: 'Momen 6' },
 ]
 
 export const phrasesByLang: Record<string, string[]> = {

@@ -7,7 +7,7 @@
     <div v-if="project" class="mt-6">
       <div class="flex flex-wrap items-center gap-2.5">
         <span class="badge-lime">Studi kasus — {{ project.year }}</span>
-        <span class="badge-lime !bg-white">{{ project.status }}</span>
+        <span class="badge-lime !bg-surface">{{ project.status }}</span>
       </div>
       <h1 class="font-display mt-5 max-w-3xl text-[2.4rem] leading-[1.0] text-balance md:text-[3.6rem]">{{ project.title }}</h1>
       <p class="mt-4 max-w-2xl leading-relaxed font-medium text-muted">{{ project.longDesc ?? project.desc }}</p>
@@ -38,7 +38,7 @@
             <a :href="project.demo" target="_blank" rel="noopener" class="btn-lime w-full">Kunjungi situs!</a>
             <a v-if="project.source" :href="project.source" target="_blank" rel="noopener" class="btn-line w-full">Source code</a>
           </div>
-          <div v-if="nextProject" class="mt-5 rounded-xl border-[2.5px] border-ink bg-white p-4">
+          <div v-if="nextProject" class="mt-5 rounded-xl border-[2.5px] border-ink bg-surface p-4">
             <p class="text-[11px] font-extrabold tracking-[0.18em] uppercase opacity-50">Lanjut ke →</p>
             <RouterLink :to="`/proyek/${nextProject.slug}`" class="font-display mt-1 flex items-center justify-between text-lg">
               {{ nextProject.title }} <span>→</span>

@@ -91,7 +91,12 @@ export function useGsapScroll() {
     aliveToken++
     mm?.revert()
     mm = null
-    ScrollTrigger.getAll().forEach((st) => st.kill())
+    // Jangan bunuh trigger milik section horizontal (.hscroll) — dia urus lifecycle sendiri
+    ScrollTrigger.getAll().forEach((st) => {
+      const t = st.trigger as HTMLElement | null
+      if (t?.closest?.('.hscroll')) return
+      st.kill()
+    })
     ctx?.revert()
     ctx = null
     window.removeEventListener('load', onLoad)

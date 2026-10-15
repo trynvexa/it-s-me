@@ -1,14 +1,14 @@
 <template>
-  <div v-if="intro" ref="curtainRef" class="intro-curtain" aria-hidden="true">
+  <div v-if="intro" ref="curtainRef" class="intro-curtain" role="dialog" aria-label="Pembuka">
     <div class="intro-inner flex w-full flex-col items-center">
-      <div class="intro-top flex w-full max-w-5xl items-center justify-between px-6 pt-5 text-[13px] font-extrabold tracking-wide">
-        <span>M. Zikri Al-Bukhori</span>
-        <CatLogo :size="48" />
-        <span>SMK Swasta Mandiri</span>
+      <div class="intro-top flex w-full max-w-5xl items-center justify-between gap-2 px-4 pt-4 text-[11px] font-extrabold tracking-wide sm:gap-3 sm:px-6 sm:pt-5 sm:text-[13px]">
+        <span class="min-w-0 flex-1 truncate">M. Zikri Al-Bukhori</span>
+        <CatLogo :size="48" class="shrink-0" />
+        <span class="min-w-0 flex-1 truncate text-right">SMK Swasta Mandiri</span>
       </div>
 
-      <div class="relative mt-14 w-full">
-        <div ref="bandRef" class="intro-band relative overflow-hidden">
+      <div class="relative mt-8 w-full md:mt-14">
+        <div ref="bandRef" class="intro-band relative overflow-hidden border-y-[3px] border-ink">
           <svg viewBox="0 0 1440 200" preserveAspectRatio="xMidYMid slice" class="block h-[170px] w-full md:h-[200px]" aria-hidden="true">
             <defs>
               <pattern id="doodleTile" width="360" height="200" patternUnits="userSpaceOnUse">
@@ -29,18 +29,22 @@
             <rect x="0" y="0" width="1440" height="200" fill="url(#doodleTile)" />
           </svg>
         </div>
-        <img
-          ref="photoRef"
-          src="/img/zikri-hero.png"
-          alt=""
-          class="absolute bottom-8 left-1/2 h-[240px] -translate-x-1/2 object-contain sm:h-[280px] md:h-[330px] [filter:drop-shadow(4px_0_0_#fffdf6)_drop-shadow(-4px_0_0_#fffdf6)_drop-shadow(0_4px_0_#fffdf6)_drop-shadow(0_-4px_0_#fffdf6)]"
-          draggable="false"
-        />
-        <Starburst :size="42" color="#c9f24b" class="intro-impact absolute bottom-24 left-[30%]" :rotate="-12" />
-        <Starburst :size="34" class="intro-impact absolute bottom-32 right-[30%]" :rotate="14" />
-        <Starburst :size="26" color="#c9f24b" class="intro-impact absolute bottom-[300px] left-[35%]" :rotate="8" />
-        <Starburst :size="22" class="intro-impact absolute bottom-[260px] right-[34%]" :rotate="-10" />
-        <div class="intro-hi badge-lime absolute bottom-[310px] left-[60%] !bg-paper" aria-hidden="true">HALO!</div>
+        <div ref="photoWrapRef" class="intro-photo-wrap absolute bottom-8 left-1/2 -translate-x-1/2">
+          <img
+            ref="photoRef"
+            :src="asset('/img/zikri-hero.png')"
+            alt=""
+            class="relative h-[240px] object-contain sm:h-[280px] md:h-[330px] [filter:drop-shadow(4px_0_0_#fffdf6)_drop-shadow(-4px_0_0_#fffdf6)_drop-shadow(0_4px_0_#fffdf6)_drop-shadow(0_-4px_0_#fffdf6)]"
+            draggable="false"
+          />
+          <span class="intro-blush intro-blush-l" aria-hidden="true"></span>
+          <span class="intro-blush intro-blush-r" aria-hidden="true"></span>
+          <Starburst :size="42" color="#c9f24b" class="intro-impact absolute -left-16 bottom-10 sm:-left-20" :rotate="-12" />
+          <Starburst :size="34" class="intro-impact absolute -right-16 bottom-16 sm:-right-20" :rotate="14" />
+          <Starburst :size="26" color="#c9f24b" class="intro-impact absolute -left-10 top-2 sm:-left-14" :rotate="8" />
+          <Starburst :size="22" class="intro-impact absolute -right-8 top-10 sm:-right-12" :rotate="-10" />
+          <div ref="hiRef" class="intro-hi badge-lime absolute top-6 -right-8 !bg-paper sm:-right-16" aria-hidden="true">{{ hiText }}</div>
+        </div>
       </div>
 
       <div class="relative">
@@ -56,7 +60,13 @@
       </p>
       </div>
       <p class="badge-lime mt-4">2025 — 2026</p>
+      <div class="intro-load-mini mt-4 flex items-center gap-3">
+        <div class="intro-bar intro-bar-mini"><span ref="fillRef" class="intro-fill"></span></div>
+        <span ref="pctRef" class="intro-pct-mini">0%</span>
+      </div>
+      <p ref="tipRef" class="intro-tip-mini">lagi ngumpulin stiker…</p>
     </div>
+    <button type="button" class="intro-skip-mini" @click.stop="skipIntro">Lewati</button>
   </div>
   <Navbar />
   <RouterView v-slot="{ Component }">
@@ -68,7 +78,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import gsap from 'gsap'
 import { RouterView } from 'vue-router'
 import router from './router'
@@ -76,10 +86,11 @@ import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 import CatLogo from './components/CatLogo.vue'
 import Starburst from './components/Starburst.vue'
+import { asset } from './utils/asset'
 import { useGsapScroll } from './composables/useGsapScroll'
 import { getLenis } from './composables/useSmoothScroll'
 import { useSmoothScroll } from './composables/useSmoothScroll'
-import { useConfettiBurst } from './composables/useConfetti'
+import { burstConfetti, useConfettiBurst } from './composables/useConfetti'
 
 useGsapScroll()
 useSmoothScroll()
@@ -89,6 +100,17 @@ const intro = ref(true)
 const curtainRef = ref<HTMLElement | null>(null)
 const bandRef = ref<HTMLElement | null>(null)
 const photoRef = ref<HTMLElement | null>(null)
+const photoWrapRef = ref<HTMLElement | null>(null)
+const fillRef = ref<HTMLElement | null>(null)
+const pctRef = ref<HTMLElement | null>(null)
+const hiRef = ref<HTMLElement | null>(null)
+const tipRef = ref<HTMLElement | null>(null)
+const hiText = ref('HALO!')
+let introTl: gsap.core.Timeline | null = null
+let introDone = false
+
+const hiWords = ['HALO!', 'HAI KAMU!', 'MEOW!']
+const tipWords = ['lagi ngumpulin stiker…', 'elus kucing dulu…', 'tahan ketawa…']
 
 const folioChars = [
   { ch: 'P', r: -6 },
@@ -103,6 +125,10 @@ const folioChars = [
 ]
 
 function finishIntro() {
+  if (introDone) return
+  introDone = true
+  introTl?.kill()
+  introTl = null
   intro.value = false
   document.body.style.overflow = ''
   getLenis()?.start()
@@ -117,6 +143,28 @@ function finishIntro() {
   }
 }
 
+function skipIntro() {
+  if (!intro.value || introDone) return
+  if (introTl) {
+    introTl.kill()
+    introTl = null
+  }
+  if (curtainRef.value) {
+    gsap.to(curtainRef.value, {
+      yPercent: -100,
+      duration: 0.55,
+      ease: 'expo.inOut',
+      onComplete: finishIntro,
+    })
+  } else {
+    finishIntro()
+  }
+}
+
+function onKey(e: KeyboardEvent) {
+  if (e.key === 'Escape') skipIntro()
+}
+
 onMounted(() => {
   // Aturan: tiap reload tanpa hash selalu mendarat di /#home.
   // Lewat replaceState SETELAH router siap supaya tidak ditimpa
@@ -127,6 +175,7 @@ onMounted(() => {
   // Selalu mulai dari hero: matikan pemulihan posisi scroll browser
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
   window.scrollTo(0, 0)
+  window.addEventListener('keydown', onKey)
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     finishIntro()
     return
@@ -134,8 +183,26 @@ onMounted(() => {
   document.body.style.overflow = 'hidden'
   // Kunci scroll Lenis selama tirai tampil (terutama Safari iOS)
   getLenis()?.stop()
+  const counter = { v: 0 }
+  const setProgress = () => {
+    const p = Math.round(counter.v)
+    if (fillRef.value) fillRef.value.style.width = `${p}%`
+    if (pctRef.value) pctRef.value.textContent = `${p}%`
+    if (tipRef.value) tipRef.value.textContent = tipWords[Math.min(tipWords.length - 1, Math.floor((p / 100) * tipWords.length))]
+  }
+  setProgress()
+  const popHi = (i: number) => {
+    hiText.value = hiWords[i % hiWords.length]
+    if (hiRef.value) gsap.fromTo(hiRef.value, { scale: 0.4, rotation: -8 }, { scale: 1, rotation: 4, duration: 0.4, ease: 'back.out(2.5)' })
+  }
+  // Klik huruf intro → salto kayak hero
+  const flipChar = (e: MouseEvent) => {
+    const t = (e.target as HTMLElement).closest('.intro-ch')
+    if (t) gsap.to(t, { rotationY: '+=360', duration: 0.7, ease: 'back.out(1.2)' })
+  }
+  curtainRef.value?.addEventListener('click', flipChar)
   gsap.set(photoRef.value, { transformPerspective: 700 })
-  gsap
+  introTl = gsap
     .timeline({ onComplete: finishIntro })
     .from('.intro-curtain .badge-lime', { scale: 0, duration: 0.4, ease: 'back.out(2)' }, 0.9)
     .from('.intro-curtain .intro-top', { opacity: 0, y: -14, duration: 0.45, ease: 'power2.out' }, 0)
@@ -173,6 +240,24 @@ onMounted(() => {
       },
       0.55,
     )
+    .from('.intro-load-mini', { opacity: 0, y: 10, duration: 0.4, ease: 'power2.out' }, 0.7)
+    .from('.intro-tip-mini', { opacity: 0, duration: 0.35 }, 0.75)
+    .to(counter, { v: 100, duration: 1.7, ease: 'power1.inOut', onUpdate: setProgress }, 0.25)
+    .call(() => popHi(1), [], 1.15)
+    .call(() => popHi(2), [], 1.55)
+    // Lompat senang + confetti sebelum tirai dibuka
+    .to(photoWrapRef.value, { y: -26, duration: 0.28, ease: 'power2.out' }, 1.78)
+    .to(photoWrapRef.value, { y: 0, duration: 0.55, ease: 'bounce.out' }, 2.06)
+    .call(() => {
+      const r = photoRef.value?.getBoundingClientRect()
+      if (r) burstConfetti(r.left + r.width / 2, r.top + r.height * 0.3, 34)
+    }, [], 1.9)
     .to(curtainRef.value, { yPercent: -100, duration: 0.85, ease: 'expo.inOut', delay: 0.35 })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', onKey)
+  introTl?.kill()
+  introTl = null
 })
 </script>

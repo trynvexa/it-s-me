@@ -3,8 +3,8 @@
     <Hero />
     <About />
     <TechBrands />
+    <ManifestoSlides />
     <Projects />
-    <Manifesto />
     <Achievements />
     <Journey />
     <Gallery />
@@ -20,7 +20,7 @@ import Marquee from '../components/Marquee.vue'
 import About from '../components/About.vue'
 import TechBrands from '../components/TechBrands.vue'
 import Projects from '../components/Projects.vue'
-import Manifesto from '../components/Manifesto.vue'
+import ManifestoSlides from '../components/ManifestoSlides.vue'
 import Achievements from '../components/Achievements.vue'
 import Journey from '../components/Journey.vue'
 import Gallery from '../components/Gallery.vue'

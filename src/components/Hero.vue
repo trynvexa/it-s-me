@@ -23,7 +23,7 @@
           <div class="hero-meta-left order-2 text-center md:order-1 md:pb-10 md:text-left">
             <p class="font-display text-xl leading-tight md:text-2xl">M. ZIKRI<br />AL-BUKHORI</p>
             <p class="mt-2 text-[13px] font-bold tracking-[0.18em] text-muted uppercase">Medan, Indonesia</p>
-            <span class="mt-3 inline-flex items-center gap-1.5 rounded-full border-[2.5px] border-ink bg-white px-3 py-1 text-[12px] font-extrabold shadow-[3px_3px_0_#141414]">
+            <span class="mt-3 inline-flex items-center gap-1.5 rounded-full border-[2.5px] border-ink bg-surface px-3 py-1 text-[12px] font-extrabold shadow-[3px_3px_0_#141414]">
               <span class="relative flex h-2 w-2">
                 <span class="absolute h-full w-full animate-ping rounded-full bg-emerald-500 opacity-70"></span>
                 <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
@@ -36,7 +36,7 @@
             <Starburst :size="44" class="floaty absolute -top-4 -right-8 z-10" :rotate="18" style="--fl-rot: 18deg" />
             <span ref="dragRef" class="hero-drag relative block cursor-grab touch-pan-y active:cursor-grabbing">
               <img
-                src="/img/zikri-hero.png"
+                :src="asset('/img/zikri-hero.png')"
                 alt="Foto Zikri Al-Bukhori"
                 class="floaty ed-img relative w-full [filter:drop-shadow(7px_8px_0_#141414)] [mask-image:linear-gradient(to_bottom,black_86%,transparent_99%)]"
                 style="--fl-rot: 0deg"
@@ -60,7 +60,7 @@
             </ul>
             <div class="mt-4 flex flex-wrap justify-center gap-2.5 md:justify-end">
               <a href="#proyek" data-magnetic data-confetti class="btn-lime pulse-glow !px-5 !py-2.5 !text-[13px]">Lihat Proyek!</a>
-              <a href="/cv/CV-Zikri-Al-Bukhori.pdf" download class="btn-line !px-5 !py-2.5 !text-[13px]">CV</a>
+              <a :href="asset('/cv/CV-Zikri-Al-Bukhori.pdf')" download class="btn-line !px-5 !py-2.5 !text-[13px]">CV</a>
             </div>
           </div>
         </div>
@@ -98,6 +98,7 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import gsap from 'gsap'
 import Starburst from './Starburst.vue'
 import { scrollToTarget } from '../composables/useSmoothScroll'
+import { asset } from '../utils/asset'
 
 const socials = [
   { label: 'Instagram', href: 'https://www.instagram.com/yo144484/' },
