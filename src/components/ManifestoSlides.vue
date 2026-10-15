@@ -267,6 +267,26 @@ async function setup() {
     const panels = gsap.utils.toArray<HTMLElement>('.hscroll-slide')
 
     const dist = () => track.scrollWidth - window.innerWidth
+    // Selebrasi sekali pas 3 layar kelar dilewati
+    let celebrated = false
+    const celebrate = () => {
+      if (celebrated) return
+      celebrated = true
+      const last = panels[panels.length - 1]
+      if (last) {
+        const s = document.createElement('div')
+        s.className = 'hscroll-finale badge-lime'
+        s.textContent = '★ Tamat!'
+        s.setAttribute('aria-hidden', 'true')
+        last.appendChild(s)
+        gsap.fromTo(
+          s,
+          { scale: 0, rotation: -18 },
+          { scale: 1, rotation: 6, duration: 0.7, ease: 'elastic.out(1, 0.4)' },
+        )
+      }
+      burstConfetti(window.innerWidth / 2, window.innerHeight * 0.35, 60)
+    }
     const tween = gsap.to(track, {
       x: () => -dist(),
       ease: 'none',
@@ -290,6 +310,8 @@ async function setup() {
           if (i !== activeIdx.value) activeIdx.value = i
           if (progressRef.value) progressRef.value.style.transform = `scaleX(${self.progress})`
         },
+        onLeave: celebrate,
+        onEnterBack: celebrate,
       },
     })
 

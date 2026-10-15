@@ -265,7 +265,11 @@ export function useGsapScroll() {
           clipPath: 'inset(0% 0% 0% 0% round 3px)',
         }
         if (variant === 'up') from.y = 18
-        else if (variant === 'left') from.x = -22
+        else if (variant === 'pop') {
+          // Stiker ditempel: membesar + naik (rotasi inline dibiarkan utuh)
+          from.y = 44
+          from.scale = 0.88
+        } else if (variant === 'left') from.x = -22
         else if (variant === 'right') from.x = 22
         else if (variant === 'scale') from.scale = 0.955
         else if (variant === 'title') {
