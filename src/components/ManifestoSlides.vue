@@ -4,14 +4,14 @@
       <div ref="trackRef" class="hscroll-track">
         <!-- Layar 1: video dance, langsung diputar, nampak utuh -->
         <article class="hscroll-slide items-center justify-center bg-ink text-white">
-          <video
-            :src="asset('/video/dance.mp4')"
+          <img
+            :src="asset('/img/dance-poster.webp')"
             class="hscroll-bgmedia absolute inset-0 h-full w-full scale-110 object-cover blur-md brightness-[0.45]"
-            muted
-            playsinline
-            preload="auto"
+            loading="lazy"
+            decoding="async"
             aria-hidden="true"
             tabindex="-1"
+            draggable="false"
           />
           <div class="absolute top-16 left-5 flex items-center gap-2 md:top-8 md:left-10">
             <p class="hscroll-pop badge-lime">✦ Layar 01</p>
@@ -34,11 +34,12 @@
               <video
                 ref="videoRef"
                 :src="asset('/video/dance.mp4')"
+                :poster="asset('/img/dance-poster.webp')"
                 class="h-auto max-h-[52svh] w-auto max-w-[86vw] rounded-[14px] bg-ink object-contain md:max-h-[58svh]"
                 muted
                 loop
                 playsinline
-                preload="auto"
+                preload="metadata"
                 aria-label="Video dance"
                 @click="toggleSound"
               />
