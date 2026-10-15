@@ -32,7 +32,7 @@
         <div ref="photoWrapRef" class="intro-photo-wrap absolute bottom-8 left-1/2 -translate-x-1/2">
           <img
             ref="photoRef"
-            :src="asset('/img/zikri-hero.png')"
+            :src="asset('/img/zikri-hero.webp')"
             alt=""
             class="relative h-[240px] object-contain sm:h-[280px] md:h-[330px] [filter:drop-shadow(4px_0_0_#fffdf6)_drop-shadow(-4px_0_0_#fffdf6)_drop-shadow(0_4px_0_#fffdf6)_drop-shadow(0_-4px_0_#fffdf6)]"
             draggable="false"

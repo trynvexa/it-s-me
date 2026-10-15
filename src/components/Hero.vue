@@ -36,7 +36,7 @@
             <Starburst :size="44" class="floaty absolute -top-4 -right-8 z-10" :rotate="18" style="--fl-rot: 18deg" />
             <span ref="dragRef" class="hero-drag relative block cursor-grab touch-pan-y active:cursor-grabbing">
               <img
-                :src="asset('/img/zikri-hero.png')"
+                :src="asset('/img/zikri-hero.webp')"
                 alt="Foto Zikri Al-Bukhori"
                 class="floaty ed-img relative w-full [filter:drop-shadow(7px_8px_0_#141414)] [mask-image:linear-gradient(to_bottom,black_86%,transparent_99%)]"
                 style="--fl-rot: 0deg"

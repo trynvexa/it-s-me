@@ -4,8 +4,8 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // Deploy di subpath GitHub Pages: trynvexa.github.io/it-s-me/
-  base: '/it-s-me/',
+  // Deploy di root domain (Netlify): aset di /assets/...
+  base: '/',
   plugins: [vue(), tailwindcss()],
   resolve: {
     alias: {

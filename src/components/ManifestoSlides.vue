@@ -266,20 +266,6 @@ async function setup() {
   ctx = gsap.context(() => {
     const panels = gsap.utils.toArray<HTMLElement>('.hscroll-slide')
 
-    // Pecah kata raksasa jadi huruf biar bisa meletup satu-satu
-    panels.forEach((p) => {
-      const word = p.querySelector('.hscroll-word')
-      if (!word) return
-      const text = word.textContent ?? ''
-      word.innerHTML = ''
-      text.split('').forEach((ch) => {
-        const s = document.createElement('span')
-        s.className = 'hscroll-char'
-        s.textContent = ch === ' ' ? ' ' : ch
-        word.appendChild(s)
-      })
-    })
-
     const dist = () => track.scrollWidth - window.innerWidth
     const tween = gsap.to(track, {
       x: () => -dist(),
@@ -343,28 +329,6 @@ async function setup() {
       )
     })
 
-    // Huruf meletup tiap layarnya dikunci, redup lagi pas ditinggal
-    panels.forEach((panel) => {
-      const chars = panel.querySelectorAll('.hscroll-char')
-      if (!chars.length) return
-      gsap.from(chars, {
-        yPercent: 115,
-        opacity: 0,
-        rotation: () => gsap.utils.random(-14, 14),
-        duration: 0.5,
-        stagger: 0.05,
-        ease: 'back.out(1.8)',
-        // Mulai dari kelihatan: kalau pin gagal aktif, huruf tetap nongol
-        immediateRender: false,
-        scrollTrigger: {
-          trigger: panel,
-          containerAnimation: tween,
-          start: 'left 60%',
-          toggleActions: 'play none none reverse',
-        },
-      })
-    })
-
     // Badge, caption, chips nge-pop nyusul
     panels.forEach((panel) => {
       const pops = panel.querySelectorAll('.hscroll-pop')
@@ -408,7 +372,28 @@ async function setup() {
       )
     })
 
+    // Video mulai diunduh/diputar pas seksi mendekat (hemat kuota awal),
+    // pause lagi kalau user scroll jauh ke atas
+    ScrollTrigger.create({
+      trigger: root,
+      start: 'top 90%',
+      end: 'bottom top',
+      onEnter: () => {
+        if (activeIdx.value === 0) playVideo()
+      },
+      onEnterBack: () => {
+        if (activeIdx.value === 0) playVideo()
+      },
+      onLeaveBack: pauseVideo,
+    })
+
     ScrollTrigger.refresh()
+
+    // Kalau setup kelar saat seksi sudah kelihatan (mis. timeout intro),
+    // langsung putar tanpa nunggu scroll berikutnya
+    if (activeIdx.value === 0 && root.getBoundingClientRect().top < window.innerHeight * 0.9) {
+      playVideo()
+    }
   }, root)
 }
 
