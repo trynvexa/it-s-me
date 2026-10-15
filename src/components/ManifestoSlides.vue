@@ -196,6 +196,7 @@ const wordPool = ['cantik!', 'lucu!', 'uwu!', 'manis!', 'gemes!', 'imut!', '♡'
 let ctx: gsap.Context | null = null
 let cancelled = false
 let offIntro: (() => void) | null = null
+let offResize: (() => void) | null = null
 
 function toggleSound() {
   const v = videoRef.value
@@ -262,6 +263,17 @@ async function setup() {
   const track = trackRef.value
   if (!root || !track) return
   root.classList.add('hscroll-ready')
+  // HP: sentuh + momentum berantem dengan snap → matikan snap, scrub lebih nempel
+  const coarse = window.matchMedia('(pointer: coarse)').matches
+
+  // URL bar HP muncul/hilang mengubah tinggi viewport: hitung ulang pin (debounce)
+  let resizeT = 0
+  const onResize = () => {
+    window.clearTimeout(resizeT)
+    resizeT = window.setTimeout(() => ScrollTrigger.refresh(), 300)
+  }
+  window.addEventListener('resize', onResize)
+  offResize = () => window.removeEventListener('resize', onResize)
 
   ctx = gsap.context(() => {
     const panels = gsap.utils.toArray<HTMLElement>('.hscroll-slide')
@@ -295,16 +307,18 @@ async function setup() {
         start: 'top top',
         end: () => `+=${dist()}`,
         pin: true,
-        scrub: 1,
+        scrub: coarse ? 0.5 : 1,
         anticipatePin: 1,
         invalidateOnRefresh: true,
-        // Lepas scroll → meluncur ngunci ke layar terdekat
-        snap: {
-          snapTo: 1 / (panels.length - 1),
-          duration: { min: 0.15, max: 0.4 },
-          ease: 'power1.inOut',
-          delay: 0.05,
-        },
+        // Lepas scroll → meluncur ngunci ke layar terdekat (matikan di sentuh)
+        snap: coarse
+          ? undefined
+          : {
+              snapTo: 1 / (panels.length - 1),
+              duration: { min: 0.15, max: 0.4 },
+              ease: 'power1.inOut',
+              delay: 0.05,
+            },
         onUpdate: (self) => {
           const i = Math.round(self.progress * (panels.length - 1))
           if (i !== activeIdx.value) activeIdx.value = i
@@ -425,6 +439,8 @@ onUnmounted(() => {
   cancelled = true
   offIntro?.()
   offIntro = null
+  offResize?.()
+  offResize = null
   ctx?.revert()
   ctx = null
   rootRef.value?.classList.remove('hscroll-ready')
